@@ -1,0 +1,10 @@
+#top-bar {
+    margin: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#logo-img {
+    height: 5em;
+}
