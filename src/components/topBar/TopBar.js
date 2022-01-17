@@ -1,16 +1,22 @@
-import React, {useContext} from "react";
+import React from "react";
 import './TopBar.css';
 import logo from '../../assets/logo.png';
-import {useState} from "react";
+import TempUnitSelector from "../tempUnitSelector/TempUnitSelector";
+import WindPicker from "../windPicker/WindPicker";
+import FavoriteIcon from "../favIcon/FavoriteIcon";
+import SearchBar from "../searchBar/SearchBar";
 
-function TopBar() {
-
+function TopBar({locationHandler}) {
 
     return (
-        <div id="top-bar">
+        <div className="top-bar">
             <img src={logo} alt="logo" id="logo-img"/>
-            <label>Testing</label>
-            <label></label>
+            <SearchBar locationHandler={locationHandler} />
+            <FavoriteIcon />
+            <TempUnitSelector/>
+            <WindPicker
+                selected="Bft"
+            />
         </div>
     );
 }

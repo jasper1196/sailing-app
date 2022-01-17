@@ -1,8 +1,9 @@
-#top-bar {
-    margin: 16px;
+.top-bar {
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: var(--accent-one);
+    padding: 16px;
 }
 
 #logo-img {

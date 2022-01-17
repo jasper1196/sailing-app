@@ -1,0 +1,30 @@
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+#location-input {
+    border: none;
+    color: var(--accent-one);
+    font-size: medium;
+    font-weight: bold;
+}
+
+#location-input:focus {
+    outline: none;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--accent-two);
+}
+
+.search-icon:hover {
+    fill: var(--accent-one);
+    cursor: pointer;
+}
