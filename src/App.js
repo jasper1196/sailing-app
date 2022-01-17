@@ -20,7 +20,7 @@ function App() {
                 <TopBar locationHandler={setSearchLocation} />
             </div>
             <div className="body">
-                <ForecastPage />
+                <ForecastPage data={searchLocation} />
             </div>
         </div>
   );
