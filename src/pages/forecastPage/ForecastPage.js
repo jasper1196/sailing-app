@@ -5,7 +5,8 @@ import ForecastSidebar from "../../components/forecastSidebar/ForecastSidebar"
 function ForecastPage({data}) {
 
     useEffect(() => {
-        console.log(data + " meer gekte");
+        console.log(data);
+        //TODO: handle data
     }, [data]);
 
     return (

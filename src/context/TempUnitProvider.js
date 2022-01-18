@@ -18,7 +18,7 @@ function TempUnitProvider({children}) {
     return (
         <TempUnitContext.Provider value={{
             selectTempUnit,
-            tempUnitSpec: temp === "celsius" ? convertToCelsius : convertToFahrenheit
+            changeTempUnit: temp === "celsius" ? convertToCelsius : convertToFahrenheit
         }}>
             {children}
         </TempUnitContext.Provider>

@@ -9,7 +9,6 @@ function WindUnitProvider({children}) {
         if (unit === !selectedWindUnit) {
             setWindUnit(unit);
         }
-        console.log(unit);
     }
 
     return (

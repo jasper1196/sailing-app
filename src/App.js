@@ -1,17 +1,25 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState, useRef} from "react";
 import './App.css';
 import TopBar from './components/topBar/TopBar.js';
 import ForecastPage from "./pages/forecastPage/ForecastPage";
 import { WindUnitContext } from "./context/WindUnitProvider.js";
 import { TempUnitContext } from "./context/TempUnitProvider.js";
+import getForecastData from "./tools/getForecastData";
 
 function App() {
-    const {TempUnitSpec} = useContext(TempUnitContext);
-    //const {WindUnitSpec} = useContext(WindUnitContext);
+    const {changeTempUnit} = useContext(TempUnitContext);
+    const {WindUnitSpec} = useContext(WindUnitContext);
     const [searchLocation, setSearchLocation] = useState("");
+    const [weatherData, setWeatherData] = useState({});
+    const isMounted = useRef(false);
 
     useEffect(() => {
-        console.log(searchLocation);
+        if (isMounted.current) {
+            setWeatherData(getForecastData("5", searchLocation));
+        } else {
+            isMounted.current = true;
+        }
+
     }, [searchLocation]);
 
     return (
@@ -20,7 +28,7 @@ function App() {
                 <TopBar locationHandler={setSearchLocation} />
             </div>
             <div className="body">
-                <ForecastPage data={searchLocation} />
+                <ForecastPage data={weatherData} />
             </div>
         </div>
   );
