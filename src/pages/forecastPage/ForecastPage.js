@@ -5,8 +5,12 @@ import ForecastSidebar from "../../components/forecastSidebar/ForecastSidebar"
 function ForecastPage({data}) {
 
     useEffect(() => {
-        console.log(data);
-        //TODO: handle data
+        if (!data.empty) {
+            console.log(data);
+        } else {
+            console.log(data);
+            //TODO: error loading data try again something like this
+        }
     }, [data]);
 
     return (
