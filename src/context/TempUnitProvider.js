@@ -1,5 +1,5 @@
 import React, {createContext, useState} from "react";
-import convertToCelsius from "../tools/convertToCelsius";
+import setToCelsius from "../tools/setToCelsius";
 import convertToFahrenheit from "../tools/convertToFahrenheit";
 
 export const TempUnitContext = createContext(null);
@@ -18,7 +18,7 @@ function TempUnitProvider({children}) {
     return (
         <TempUnitContext.Provider value={{
             selectTempUnit,
-            changeTempUnit: temp === "celsius" ? convertToCelsius : convertToFahrenheit
+            changeTempUnit: temp === "celsius" ? convertToFahrenheit : setToCelsius
         }}>
             {children}
         </TempUnitContext.Provider>

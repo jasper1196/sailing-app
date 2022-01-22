@@ -1,0 +1,5 @@
+.default-information {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}

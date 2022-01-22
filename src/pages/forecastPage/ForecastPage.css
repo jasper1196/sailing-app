@@ -1,4 +1,4 @@
-.forecast-page {
+.forecast-page, .forecast {
     display: flex;
     flex-direction: row;
 }

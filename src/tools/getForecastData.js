@@ -1,13 +1,11 @@
 import axios from "axios";
-import testData from "../test.json"
+import testData from "../forecast.json"
 
 function getForecastData(timeWindow, location) {
     try {
-//      const data = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${location}`);
-//        const forecastData = fetchData(location);
+//        const data = fetchData(location);
 
-//        console.log(forecastData);
-        return (filterData(testData.data));
+        return (filterData(testData));
     } catch (e) {
         console.error(e);
     }
@@ -26,6 +24,7 @@ function filterData(data) {
         country: data.location.country,
         epoch: data.location.localtime_epoch
     };
+
     const weatherData = {
         temperature: data.current.temp_c,
         description: data.current.condition.text,
@@ -37,7 +36,55 @@ function filterData(data) {
         uv_index: data.current.uv,
         gusts: data.current.gust_kph
     };
-    const filteredData = {empty: false, location_data: locationData, weather_data: weatherData};
+
+    const forecastData = {days: []};
+
+    for (let i in data.forecast.forecastday) {
+        const forecastDay = data.forecast.forecastday[i];
+        const day = {
+            epoch: forecastDay.date_epoch,
+            hours: []
+        };
+
+        let epochChecker = false;
+
+        for (let j in forecastDay.hour) {
+
+            const hour = {
+                epoch: forecastDay.hour[j].time_epoch,
+                temperature: forecastDay.hour[j].temp_c,
+                description: forecastDay.hour[j].condition.text,
+                wind_speed: forecastDay.hour[j].wind_kph,
+                wind_degree: forecastDay.hour[j].wind_degree,
+                wind_direction: forecastDay.hour[j].wind_dir,
+                precip: forecastDay.hour[j].precip_mm,
+                cloud_coverage: forecastDay.hour[j].cloud,
+                uv_index: forecastDay.hour[j].uv,
+                gusts: forecastDay.hour[j].gust_kph
+            }
+
+            if (i === "0") {
+
+                if (data.current.last_updated_epoch === hour.epoch) {
+                    day.hours.push(hour);
+                    epochChecker = true;
+                } else if (epochChecker) {
+                    day.hours.push(hour);
+                }
+
+            } else {
+                day.hours.push(hour);
+            }
+        }
+        forecastData.days.push(day);
+    }
+
+    const filteredData = {
+        empty: false,
+        location_data: locationData,
+        current_data: weatherData,
+        forecast_data: forecastData
+    };
     return (filteredData);
 }
 

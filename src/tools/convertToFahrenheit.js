@@ -1,5 +1,8 @@
 function convertToFahrenheit(temp) {
-    return temp*2;
+    const convertedTemp = temp * 1.8 + 32;
+
+    return `${convertedTemp.toFixed(1)} °F`;
 }
+
 
 export default convertToFahrenheit;
