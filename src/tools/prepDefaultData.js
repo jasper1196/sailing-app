@@ -1,3 +1,5 @@
+import convertEpoch from "./convertEpoch";
+
 function prepDefaultData(data, interval) {
     try {
         const tempData = [];
@@ -57,15 +59,6 @@ function prepDefaultData(data, interval) {
         console.log("Error caught");
         console.error(e);
     }
-}
-
-function convertEpoch(epoch) {
-    const fullDate = new Date(epoch * 1000);
-
-    const date = fullDate.toLocaleDateString("en-GB",{dateStyle: "short"});
-    const time = fullDate.toLocaleTimeString("en-GB", {timeStyle: "short"});
-
-    return {date, time};
 }
 
 export default prepDefaultData;

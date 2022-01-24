@@ -2,8 +2,22 @@
     width: 150px;
     padding: 16px;
     background-color: var(--accent-two);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
 }
 
 p {
     margin: 0;
+}
+
+.range-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.location-information {
+    display: flex;
+    flex-direction: column;
 }

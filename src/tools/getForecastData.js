@@ -22,7 +22,8 @@ function filterData(data) {
     const locationData = {
         city: data.location.name,
         country: data.location.country,
-        epoch: data.location.localtime_epoch
+        epoch: data.location.localtime_epoch,
+        timezone: data.location.tz_id
     };
 
     const weatherData = {

@@ -1,0 +1,26 @@
+.switch {
+    background-color: gray;
+    padding: 3px;
+    display: inline-flex;
+    column-gap: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid var(--accent-one);
+}
+
+.options {
+    font-size: .8em;
+    cursor: inherit;
+    display: inline-block;
+    padding: 2px 4px 4px 4px;
+    border: 2px solid transparent;
+    user-select: none;
+    transition-duration: .5s;
+}
+
+#highlighted {
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid var(--accent-one);
+    transition-duration: .5s;
+}

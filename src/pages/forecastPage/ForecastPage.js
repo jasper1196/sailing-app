@@ -5,6 +5,7 @@ import DefaultInformation from "../../components/defaultInformation/DefaultInfor
 import prepDefaultData from "../../tools/prepDefaultData";
 import {TempUnitContext} from "../../context/TempUnitProvider";
 
+
 function ForecastPage({data}) {
     const [defaultView, setDefaultView] = useState(true);
     const [forecastHours, setForecastHours] = useState(6);
@@ -32,17 +33,17 @@ function ForecastPage({data}) {
             <ForecastSidebar
                 defaultView={defaultView}
                 switchView={setDefaultView}
+                changeForecastRange={setForecastHours}
+                data={data}
             />
-            {defaultView ?
+            {!dataLoaded ?
 
-                <div
-                    className="forecast"
-                >
+                <label>No data loaded</label>
 
-                    {!dataLoaded ?
-                        <label>No data loaded</label>
+                :
 
-                        :
+                <div className="forecast">
+                    {defaultView ?
 
                         prepDefaultData(data, forecastHours).map((hour) => {
 
@@ -54,17 +55,14 @@ function ForecastPage({data}) {
                                 temp={changeTempUnit(hour.temperature)}
                                 desc={hour.description}
                             />
-                        );
+                        )})
 
-                    })}
+                        :
 
-
+                        <label>extended</label>}
                 </div>
 
 
-                :
-
-                <label>extended</label>
 
             }
 
