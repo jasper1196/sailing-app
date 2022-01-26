@@ -61,7 +61,8 @@ function filterData(data) {
                 precip: forecastDay.hour[j].precip_mm,
                 cloud_coverage: forecastDay.hour[j].cloud,
                 uv_index: forecastDay.hour[j].uv,
-                gusts: forecastDay.hour[j].gust_kph
+                gusts: forecastDay.hour[j].gust_kph,
+                icon: forecastDay.hour[j].condition.icon
             }
 
             if (i === "0") {

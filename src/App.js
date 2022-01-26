@@ -2,9 +2,11 @@ import React, {useContext, useEffect, useState, useRef} from "react";
 import './App.css';
 import TopBar from './components/topBar/TopBar.js';
 import ForecastPage from "./pages/forecastPage/ForecastPage";
+import LoginPage from "./pages/loginPage/LoginPage";
 import { WindUnitContext } from "./context/WindUnitProvider.js";
 import { TempUnitContext } from "./context/TempUnitProvider.js";
 import getForecastData from "./tools/getForecastData";
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 
 function App() {
     const {changeTempUnit} = useContext(TempUnitContext);
@@ -24,12 +26,18 @@ function App() {
 
     return (
         <div className="app">
-            <div className="header">
-                <TopBar locationHandler={setSearchLocation} />
-            </div>
-            <div className="body">
-                <ForecastPage data={weatherData} />
-            </div>
+            <Router>
+                <div className="header">
+                    <TopBar locationHandler={setSearchLocation} />
+                </div>
+                <div className="body">
+                    <Routes>
+                        <Route path="/" element={<Navigate to="/forecast" />} />
+                        <Route path="/forecast" element={<ForecastPage data={weatherData} />} />
+                        <Route path="/login" element={<LoginPage />}/>
+                    </Routes>
+                </div>
+            </Router>
         </div>
   );
 }

@@ -2,7 +2,8 @@ import React, {useEffect, useRef, useState, useContext} from "react";
 import "./ForecastPage.css";
 import ForecastSidebar from "../../components/forecastSidebar/ForecastSidebar";
 import DefaultInformation from "../../components/defaultInformation/DefaultInformation";
-import prepDefaultData from "../../tools/prepDefaultData";
+import ExtendedInformation from "../../components/extendedInformation/ExtendedInformation";
+import prepData from "../../tools/prepData";
 import {TempUnitContext} from "../../context/TempUnitProvider";
 
 
@@ -45,7 +46,7 @@ function ForecastPage({data}) {
                 <div className="forecast">
                     {defaultView ?
 
-                        prepDefaultData(data, forecastHours).map((hour) => {
+                        prepData(data, forecastHours, false).map((hour) => {
 
                         return (
                             <DefaultInformation
@@ -59,7 +60,16 @@ function ForecastPage({data}) {
 
                         :
 
-                        <label>extended</label>}
+                        prepData(data, forecastHours, true).map((hour) => {
+
+                            return (
+                                <ExtendedInformation
+                                    key={hour.key}
+                                    data={hour}
+                                />
+                            )
+                        })
+                    }
                 </div>
 
 

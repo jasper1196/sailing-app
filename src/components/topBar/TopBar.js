@@ -14,9 +14,7 @@ function TopBar({locationHandler}) {
             <SearchBar locationHandler={locationHandler} />
             <FavoriteIcon />
             <TempUnitSelector/>
-            <WindPicker
-                selected="Bft"
-            />
+            <WindPicker />
         </div>
     );
 }

@@ -1,20 +1,22 @@
 import React, {createContext, useState} from "react";
+import convertWindUnit from "../tools/convertWindUnit";
 
 export const WindUnitContext = createContext(null);
 
 function WindUnitProvider({children}) {
-    const [selectedWindUnit, setWindUnit] = useState(null);
+    const [selectedWindUnit, setWindUnit] = useState("Bft");
 
-    function changeWindUnit(unit) {
-        if (unit === !selectedWindUnit) {
+    function selectWindUnit(unit) {
+        if (unit !== selectedWindUnit) {
             setWindUnit(unit);
         }
     }
 
     return (
         <WindUnitContext.Provider value={{
-            setWindUnit,
-            changeWindUnit
+            selectedWindUnit,
+            selectWindUnit,
+            convertWind: convertWindUnit
         }}>
             {children}
         </WindUnitContext.Provider>

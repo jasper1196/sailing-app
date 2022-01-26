@@ -1,11 +1,12 @@
 import React, {useState, useContext, useEffect} from "react";
 import {WindUnitContext} from "../../context/WindUnitProvider";
 
-function WindPicker(props) {
-    const [selectedOption, selectOption] = useState(props.selected);
+function WindPicker() {
+    const {selectedWindUnit, selectWindUnit} = useContext(WindUnitContext);
+    const [selectedOption, selectOption] = useState(selectedWindUnit);
     const [opened, toggleOpened] = useState(false);
 
-    const {changeWindUnit} = useContext(WindUnitContext);
+
     const windUnits = [
         {
             "unit": "Bft",
@@ -30,7 +31,9 @@ function WindPicker(props) {
     ];
 
     useEffect(() => {
-        changeWindUnit(selectedOption);
+        console.log(selectedOption);
+        selectWindUnit(selectedOption);
+
     }, [selectedOption]);
 
 

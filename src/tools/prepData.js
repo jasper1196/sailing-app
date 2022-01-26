@@ -1,18 +1,33 @@
 import convertEpoch from "./convertEpoch";
 
-function prepDefaultData(data, interval) {
+function prepData(data, interval, extended) {
     try {
         const tempData = [];
 
         for (let i in data.forecast_data.days) {
             for (let j in data.forecast_data.days[i].hours) {
+
+                const forecast = data.forecast_data.days[i].hours[j];
+
                 const tempHourData = {
-                    key: data.forecast_data.days[i].hours[j].epoch,
-                    date: convertEpoch(data.forecast_data.days[i].hours[j].epoch).date,
-                    time: convertEpoch(data.forecast_data.days[i].hours[j].epoch).time,
-                    temperature: data.forecast_data.days[i].hours[j].temperature,
-                    description: data.forecast_data.days[i].hours[j].description
+                    key: forecast.epoch,
+                    date: convertEpoch(forecast.epoch).date,
+                    time: convertEpoch(forecast.epoch).time,
+                    temperature: forecast.temperature,
+                    description: forecast.description
                 };
+
+                if (extended) {
+                    tempHourData.icon = forecast.icon;
+                    tempHourData.wind_speed = forecast.wind_speed;
+                    tempHourData.wind_degree = forecast.wind_degree;
+                    tempHourData.wind_direction = forecast.wind_direction;
+                    tempHourData.cloud_cover = forecast.cloud_coverage;
+                    tempHourData.precip = forecast.precip;
+                    tempHourData.gusts = forecast.gusts;
+                    tempHourData.uv_index = forecast.uv_index;
+                }
+
                 tempData.push(tempHourData);
             }
         }
@@ -61,4 +76,4 @@ function prepDefaultData(data, interval) {
     }
 }
 
-export default prepDefaultData;
+export default prepData;
