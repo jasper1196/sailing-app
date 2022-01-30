@@ -4,15 +4,18 @@ import './index.css';
 import App from './App.js';
 import TempUnitProvider from "./context/TempUnitProvider.js";
 import WindUnitProvider from "./context/WindUnitProvider.js";
+import LoginProvider from "./context/LoginProvider";
 
 
 ReactDOM.render(
     <React.StrictMode>
-        <WindUnitProvider>
-            <TempUnitProvider>
-                <App />
-            </TempUnitProvider>
-        </WindUnitProvider>
+        <LoginProvider>
+            <WindUnitProvider>
+                <TempUnitProvider>
+                    <App />
+                </TempUnitProvider>
+            </WindUnitProvider>
+        </LoginProvider>
     </React.StrictMode>,
   document.getElementById('root')
 );

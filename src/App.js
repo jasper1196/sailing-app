@@ -3,14 +3,14 @@ import './App.css';
 import TopBar from './components/topBar/TopBar.js';
 import ForecastPage from "./pages/forecastPage/ForecastPage";
 import LoginPage from "./pages/loginPage/LoginPage";
-import { WindUnitContext } from "./context/WindUnitProvider.js";
-import { TempUnitContext } from "./context/TempUnitProvider.js";
+//import { WindUnitContext } from "./context/WindUnitProvider.js";
+//import { TempUnitContext } from "./context/TempUnitProvider.js";
 import getForecastData from "./tools/getForecastData";
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 
 function App() {
-    const {changeTempUnit} = useContext(TempUnitContext);
-    const {WindUnitSpec} = useContext(WindUnitContext);
+//    const {changeTempUnit} = useContext(TempUnitContext);
+//    const {WindUnitSpec} = useContext(WindUnitContext);
     const [searchLocation, setSearchLocation] = useState("");
     const [weatherData, setWeatherData] = useState({});
     const isMounted = useRef(false);
