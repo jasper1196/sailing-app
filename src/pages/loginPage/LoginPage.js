@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import "./LoginPage.css";
+import {useNavigate} from "react-router-dom";
 
 function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    let navigate = useNavigate();
 
     return (
         <div className="login-container">
@@ -36,7 +38,12 @@ function LoginPage() {
                 </button>
             </form>
             <p>Nog geen account? <br/> Klik hier om te registreren.</p>
-            <button type="button">Registreren</button>
+            <button
+                type="button"
+                onClick={() => (navigate("/register"))}
+            >
+                Registreren
+            </button>
         </div>
     );
 }

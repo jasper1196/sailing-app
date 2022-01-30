@@ -3,6 +3,7 @@ import './App.css';
 import TopBar from './components/topBar/TopBar.js';
 import ForecastPage from "./pages/forecastPage/ForecastPage";
 import LoginPage from "./pages/loginPage/LoginPage";
+import RegisterPage from "./pages/registerPage/RegisterPage";
 //import { WindUnitContext } from "./context/WindUnitProvider.js";
 //import { TempUnitContext } from "./context/TempUnitProvider.js";
 import getForecastData from "./tools/getForecastData";
@@ -35,6 +36,7 @@ function App() {
                         <Route path="/" element={<Navigate to="/forecast" />} />
                         <Route path="/forecast" element={<ForecastPage data={weatherData} />} />
                         <Route path="/login" element={<LoginPage />}/>
+                        <Route path="/register" element={<RegisterPage />}/>
                     </Routes>
                 </div>
             </Router>
