@@ -1,16 +1,24 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {useForm} from "react-hook-form";
 import "./RegisterPage.css";
+import registerUser from "../../tools/registerUser";
 
 function RegisterPage() {
     const {register, handleSubmit, formState: {errors}, watch} = useForm();
 
     function onFormSubmit(regData) {
-        console.log(regData);
+        const userRegistered = registerUser(regData);
+        if (userRegistered) {
+            console.log("User registration successful");
+        } else {
+            console.log("User registration failed");
+        }
     }
 
     const passwordWatcher = watch("password", "");
     const confirmationWatcher = watch("confirmation", "")
+
+    //TODO: make following functions as external files
 
     function validateNumber(value) {
         return (/\d/.test(value));
@@ -124,6 +132,7 @@ function RegisterPage() {
                 </div>
                 <button type="submit">Registreren</button>
             </form>
+            <button type="button">test</button>
         </div>
     );
 }
