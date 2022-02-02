@@ -2,12 +2,17 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import "./RegisterPage.css";
 import registerUser from "../../tools/registerUser";
+import validateNumber from "../../tools/validateNumber";
+import validateUppercase from "../../tools/validateUppercase";
+import validateSpecial from "../../tools/validateSpecial";
+import validateConfirmation from "../../tools/validateConfirmation";
+import validateLowercase from "../../tools/validateLowercase";
 
 function RegisterPage() {
     const {register, handleSubmit, formState: {errors}, watch} = useForm();
 
-    function onFormSubmit(regData) {
-        const userRegistered = registerUser(regData);
+    function onFormSubmit(inputData) {
+        const userRegistered = registerUser(inputData);
         if (userRegistered) {
             console.log("User registration successful");
         } else {
@@ -17,28 +22,6 @@ function RegisterPage() {
 
     const passwordWatcher = watch("password", "");
     const confirmationWatcher = watch("confirmation", "")
-
-    //TODO: make following functions as external files
-
-    function validateNumber(value) {
-        return (/\d/.test(value));
-    }
-
-    function validateLowercase(value) {
-        return (/[a-z]/.test(value));
-    }
-
-    function validateUppercase(value) {
-        return (/[A-Z]/.test(value));
-    }
-
-    function validateSpecial(value) {
-        return (/[!@#$%^&*()-.,+]/.test(value));
-    }
-
-    function validateConfirmation(value, confirmationValue) {
-        return (value === confirmationValue && confirmationValue !== "");
-    }
 
     return (
         <div className="register-container">
