@@ -6,18 +6,15 @@ async function userLogin(username, password) {
             "username": username,
             "password": password
         });
-        console.log(response);
         if (response.status === 200) {
-            return ({
-                "loggedIn": true,
-                "token": response.data.accessToken
-            });
+            localStorage.setItem("token", response.data.accessToken);
+            return true;
         } else {
-            return ({"loggedIn": false});
+            return false;
         }
     } catch (e) {
         console.log(e);
-        return ({"loggedIn": false});
+        return false;
     }
 }
 

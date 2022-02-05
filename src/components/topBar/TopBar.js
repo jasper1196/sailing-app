@@ -19,20 +19,17 @@ function TopBar({locationHandler}) {
             <Link to="/forecast">
                 <img src={logo} alt="logo" id="logo-img"/>
             </Link>
-            {location.pathname === "/forecast" ?
-                [
-                    <SearchBar locationHandler={locationHandler} />,
-                    <Link id="go-to-login" to="/login">Inloggen</Link>,
-                    <FavoriteIcon />,
-                    <TempUnitSelector/>,
-                    <WindPicker />
-                ]
-                :
-                null
-            }
 
-
-
+            <div
+                className="forecast-components"
+                id={location.pathname === "/forecast" ? "show" : "no-show"}
+            >
+                <SearchBar locationHandler={locationHandler}/>
+                <Link id="go-to-login" to="/login">Inloggen</Link>
+                <FavoriteIcon />
+                <TempUnitSelector/>
+                <WindPicker />
+            </div>
         </div>
     );
 }

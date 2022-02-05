@@ -115,7 +115,6 @@ function RegisterPage() {
                 </div>
                 <button type="submit">Registreren</button>
             </form>
-            <button type="button">test</button>
         </div>
     );
 }

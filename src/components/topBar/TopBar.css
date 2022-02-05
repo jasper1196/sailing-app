@@ -13,3 +13,13 @@
 #go-to-login {
     color: white;
 }
+
+.forecast-components {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#no-show {
+    display: none;
+}

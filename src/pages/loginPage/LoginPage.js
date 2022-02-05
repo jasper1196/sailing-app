@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./LoginPage.css";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
@@ -6,13 +6,20 @@ import userLogin from "../../tools/userLogin";
 
 function LoginPage() {
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const [loginErrors, setLoginErrors] = useState({error: false, message: ""});
     let navigate = useNavigate();
 
     function onFormSubmit(inputData) {
         console.log(inputData);
-        userLogin(inputData.username, inputData.password).then((message) => {
-            console.log(message);
+        userLogin(inputData.username, inputData.password).then((success) => {
+            if (success) {
+                navigate("/forecast");
+            } else {
+                setLoginErrors({error: true, message: "Gebruikersnaam of wachtwoord is onjuist."})
+            }
+
         }).catch((errorMessage) => {
+            setLoginErrors({error: true, message: "Er is iets fout gegaan, probeer het nog een keer."})
             console.log(errorMessage);
         });
 
@@ -47,6 +54,7 @@ function LoginPage() {
                     />
                     {errors.password && <p className="login-errors">{errors.password.message}</p>}
                 </div>
+                {loginErrors.error && <p className="login-errors">{loginErrors.message}</p>}
                 <button
                     id="login-button"
                     type="submit"
