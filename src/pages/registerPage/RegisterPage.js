@@ -20,6 +20,8 @@ function RegisterPage() {
         }
     }
 
+    //TODO: add fist + lastname in info field with proprietary formatting.
+
     const passwordWatcher = watch("password", "");
     const confirmationWatcher = watch("confirmation", "")
 

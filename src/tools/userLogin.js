@@ -1,6 +1,7 @@
 import axios from "axios";
 
 async function userLogin(username, password) {
+
     try {
         const response = await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signin", {
             "username": username,
@@ -8,13 +9,13 @@ async function userLogin(username, password) {
         });
         if (response.status === 200) {
             localStorage.setItem("token", response.data.accessToken);
-            return true;
+            return response;
         } else {
-            return false;
+            return null;
         }
     } catch (e) {
         console.log(e);
-        return false;
+        return null;
     }
 }
 

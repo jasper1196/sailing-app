@@ -8,7 +8,7 @@ async function registerUser(userData) {
             "password": userData.password,
             "role": ["user"]
         });
-        if (response.data.data.message === "User registered successfully!") {
+        if (response.status === 200) {
             return true;
         } else {
             return false;
@@ -17,7 +17,6 @@ async function registerUser(userData) {
         console.log(e);
         return false;
     }
-
 }
 
 export default registerUser;

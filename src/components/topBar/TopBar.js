@@ -6,6 +6,9 @@ import WindPicker from "../windPicker/WindPicker";
 import FavoriteIcon from "../favIcon/FavoriteIcon";
 import SearchBar from "../searchBar/SearchBar";
 import {Link, useLocation} from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import DynamicLoginButton from "../dynamicLoginButton/DynamicLoginButton";
+
 
 function TopBar({locationHandler}) {
     const location = useLocation();
@@ -25,7 +28,7 @@ function TopBar({locationHandler}) {
                 id={location.pathname === "/forecast" ? "show" : "no-show"}
             >
                 <SearchBar locationHandler={locationHandler}/>
-                <Link id="go-to-login" to="/login">Inloggen</Link>
+                <DynamicLoginButton />
                 <FavoriteIcon />
                 <TempUnitSelector/>
                 <WindPicker />

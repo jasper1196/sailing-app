@@ -1,28 +1,33 @@
-import React, {useState} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import "./LoginPage.css";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import userLogin from "../../tools/userLogin";
+import {LoginContext} from "../../context/LoginProvider";
+import getUserInfo from "../../tools/getUserInfo";
 
 function LoginPage() {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [loginErrors, setLoginErrors] = useState({error: false, message: ""});
+    const {authData, login} = useContext(LoginContext);
     let navigate = useNavigate();
 
     function onFormSubmit(inputData) {
         console.log(inputData);
-        userLogin(inputData.username, inputData.password).then((success) => {
-            if (success) {
-                navigate("/forecast");
-            } else {
-                setLoginErrors({error: true, message: "Gebruikersnaam of wachtwoord is onjuist."})
-            }
+        login(inputData.username, inputData.password);
+    }
 
-        }).catch((errorMessage) => {
-            setLoginErrors({error: true, message: "Er is iets fout gegaan, probeer het nog een keer."})
-            console.log(errorMessage);
-        });
+    useEffect(() => {
+        if (authData.status === "authorized") {
+            navigate("/forecast");
+        } else if (authData.status === "failed") {
+            setLoginErrors({error: true, message: "Gebruikersnaam of wachtwoord is onjuist."})
+        }
+    }, [authData]);
 
+
+    function testFunction() {
+        const data = getUserInfo(localStorage.getItem("token"));
+        console.log(data);
     }
 
     return (
@@ -69,6 +74,8 @@ function LoginPage() {
             >
                 Registreren
             </button>
+
+            <button type="button" onClick={testFunction}>test</button>
         </div>
     );
 }
