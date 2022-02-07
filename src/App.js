@@ -8,6 +8,8 @@ import RegisterPage from "./pages/registerPage/RegisterPage";
 //import { TempUnitContext } from "./context/TempUnitProvider.js";
 import getForecastData from "./tools/getForecastData";
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
+import AccountPage from "./pages/accountPage/AccountPage";
+import PasswordPage from "./pages/passwordPage/PasswordPage";
 
 function App() {
 //    const {changeTempUnit} = useContext(TempUnitContext);
@@ -25,6 +27,8 @@ function App() {
 
     }, [searchLocation]);
 
+    //TODO: catch if someone goes to another URL that is not specified in routes
+
     return (
         <div className="app">
             <Router>
@@ -37,6 +41,8 @@ function App() {
                         <Route path="/forecast" element={<ForecastPage data={weatherData} />} />
                         <Route path="/login" element={<LoginPage />}/>
                         <Route path="/register" element={<RegisterPage />}/>
+                        <Route path="/account" element={<AccountPage />} />
+                        <Route path="/change-password" element={<PasswordPage />} />
                     </Routes>
                 </div>
             </Router>

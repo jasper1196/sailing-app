@@ -1,0 +1,24 @@
+.account-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    user-select: none;
+}
+
+.welcome-msg:hover {
+    cursor: pointer;
+}
+
+.account-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

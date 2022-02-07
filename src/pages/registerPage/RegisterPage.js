@@ -7,20 +7,23 @@ import validateUppercase from "../../tools/validateUppercase";
 import validateSpecial from "../../tools/validateSpecial";
 import validateConfirmation from "../../tools/validateConfirmation";
 import validateLowercase from "../../tools/validateLowercase";
+import {useNavigate} from "react-router-dom";
 
 function RegisterPage() {
     const {register, handleSubmit, formState: {errors}, watch} = useForm();
+    const navigate = useNavigate();
 
     function onFormSubmit(inputData) {
         const userRegistered = registerUser(inputData);
         if (userRegistered) {
             console.log("User registration successful");
+            navigate("/login");
         } else {
             console.log("User registration failed");
         }
     }
 
-    //TODO: add fist + lastname in info field with proprietary formatting.
+    //TODO: add fist + lastname in info field with proprietary formatting. (optional)
 
     const passwordWatcher = watch("password", "");
     const confirmationWatcher = watch("confirmation", "")

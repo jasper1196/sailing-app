@@ -48,6 +48,10 @@ function LoginProvider({children}) {
         });
     }
 
+    function logout() {
+        //TODO: make logout function
+    }
+
 
     return (
         <LoginContext.Provider value={{
