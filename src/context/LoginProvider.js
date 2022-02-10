@@ -17,8 +17,16 @@ function LoginProvider({children}) {
         if (token) {
             getUserInfo(token).then((userInfo) => {
                 console.log(userInfo);
+                setAuthData({
+                    "data": {
+                        "email": userInfo.data.email,
+                        "username": userInfo.data.username
+                    },
+                    "status": "authorized"
+                });
             }).catch((e) => {
                 console.log(e);
+                localStorage.clear();
             });
         } else {
             setAuthData({
@@ -32,6 +40,7 @@ function LoginProvider({children}) {
 
     function login(username, password) {
         userLogin(username, password).then((response) => {
+            console.log(response);
             setAuthData({
                 "data": {
                     "email": response.data.email,
@@ -49,16 +58,27 @@ function LoginProvider({children}) {
     }
 
     function logout() {
-        //TODO: make logout function
+        localStorage.clear();
+        setAuthData({
+            "data": null,
+            "status": "unauthorized"
+        });
     }
 
 
     return (
         <LoginContext.Provider value={{
             authData,
-            login
+            login,
+            logout,
         }}>
-            {children}
+            {authData.status === "pending" ?
+                <p>Loading</p>
+
+                :
+
+                children
+            }
         </LoginContext.Provider>
     );
 }

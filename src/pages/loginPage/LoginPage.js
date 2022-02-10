@@ -12,7 +12,6 @@ function LoginPage() {
     let navigate = useNavigate();
 
     function onFormSubmit(inputData) {
-        console.log(inputData);
         login(inputData.username, inputData.password);
     }
 

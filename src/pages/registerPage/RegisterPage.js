@@ -14,19 +14,24 @@ function RegisterPage() {
     const navigate = useNavigate();
 
     function onFormSubmit(inputData) {
-        const userRegistered = registerUser(inputData);
-        if (userRegistered) {
-            console.log("User registration successful");
-            navigate("/login");
-        } else {
+
+        registerUser(inputData).then((response) => {
+            if (response) {
+                console.log("User registration successful");
+                navigate("/login");
+            } else {
+                console.log("User registration failed");
+            }
+        }).catch((e) => {
             console.log("User registration failed");
-        }
+            console.log(e);
+        })
+
+
     }
 
-    //TODO: add fist + lastname in info field with proprietary formatting. (optional)
-
     const passwordWatcher = watch("password", "");
-    const confirmationWatcher = watch("confirmation", "")
+    const confirmationWatcher = watch("confirmation", "");
 
     return (
         <div className="register-container">

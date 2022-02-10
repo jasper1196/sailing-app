@@ -12,10 +12,6 @@ import DynamicLoginButton from "../dynamicLoginButton/DynamicLoginButton";
 function TopBar({locationHandler}) {
     const location = useLocation();
 
-    useEffect(() => {
-        console.log(location);
-    }, [location])
-
     return (
         <div className="top-bar">
             <Link to="/forecast">

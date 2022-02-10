@@ -1,9 +1,11 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./AccountMenu.css";
 import {useLocation, useNavigate} from "react-router-dom";
+import {LoginContext} from "../../context/LoginProvider";
 
 function AccountMenu({name}) {
     const [opened, setOpened] = useState(false);
+    const {logout} = useContext(LoginContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -33,7 +35,12 @@ function AccountMenu({name}) {
                     >
                         Wachtwoord wijzigen
                     </button>
-                    <button type="button">Uitloggen</button>
+                    <button
+                        type="button"
+                        onClick={logout}
+                    >
+                        Uitloggen
+                    </button>
                 </div>
             }
         </div>
