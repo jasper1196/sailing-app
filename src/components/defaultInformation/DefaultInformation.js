@@ -1,15 +1,15 @@
 import React from "react";
 import "./DefaultInformation.css";
 
-function DefaultInformation(props) {
+function DefaultInformation(data) {
     return (
         <div
             className="default-information"
         >
-            <label>{props.date}</label>
-            <label>{props.time}</label>
-            <label>{props.temp}</label>
-            <label>{props.desc}</label>
+            <label>{data.date}</label>
+            <label>{data.time}</label>
+            <label>{data.temp}</label>
+            <label>{data.desc}</label>
         </div>
     );
 }

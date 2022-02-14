@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {Fragment, useEffect, useRef, useState} from "react";
 import "./ForecastSidebar.css";
 import Switcher from "../../components/switcher/Switcher";
 import convertEpoch from "../../tools/convertEpoch";
@@ -39,39 +39,40 @@ function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
     return (
         <div className="sidebar">
 
-            {showLocationInfo ?
-                <div className="location-information">
-                    <label id="city">{data.location_data.city}</label>
-                    <label id="country">{data.location_data.country}</label>
-                    <label id="date">{convertEpoch(data.location_data.epoch).date}</label>
-                    <label id="day">{days[new Date(data.location_data.epoch).getDay()]}</label>
-                    <label id="time">{time}</label>
-                </div>
+            {showLocationInfo &&
+                <Fragment>
+                    <div className="location-information">
+                        <label id="city">{data.location_data.city}</label>
+                        <label id="country">{data.location_data.country}</label>
+                        <label id="date">{convertEpoch(data.location_data.epoch).date}</label>
+                        <label id="day">{days[new Date(data.location_data.epoch).getDay()]}</label>
+                        <label id="time">{time}</label>
+                    </div>
+                    <div className="range-container">
+                        <label id="hour-indicator">{valueToHours(rangeValue)} uur</label>
+                        <input
+                            type="range"
+                            min="1"
+                            max="7"
+                            value={rangeValue}
+                            onChange={(e) => {setRangeValue(e.target.value)}}
+                            className="slider"
+                            id="rangeSlider"
+                        />
+                    </div>
 
-                :
+                    <Switcher
+                        option1="Standaard"
+                        option2="Uitgebreid"
+                        view={defaultView}
+                        switchView={switchView}
+                    />
+                </Fragment>
 
-                <label>Test</label>
+
             }
 
-            <div className="range-container">
-                <label id="hour-indicator">{valueToHours(rangeValue)} uur</label>
-                <input
-                    type="range"
-                    min="1"
-                    max="7"
-                    value={rangeValue}
-                    onChange={(e) => {setRangeValue(e.target.value)}}
-                    className="slider"
-                    id="rangeSlider"
-                />
-            </div>
 
-            <Switcher
-                option1="Standaard"
-                option2="Uitgebreid"
-                view={defaultView}
-                switchView={switchView}
-            />
         </div>
     );
 }

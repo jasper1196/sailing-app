@@ -1,6 +1,7 @@
 import React, {createContext, useState, useEffect} from "react";
 import userLogin from "../tools/userLogin";
 import getUserInfo from "../tools/getUserInfo";
+import axios from "axios";
 
 export const LoginContext = createContext(null);
 
@@ -9,6 +10,8 @@ function LoginProvider({children}) {
         "data": null,
         "status": "pending"
     });
+
+    axios.get("https://frontend-educational-backend.herokuapp.com/api/test/all");
 
 
     useEffect(() => {
@@ -27,6 +30,10 @@ function LoginProvider({children}) {
             }).catch((e) => {
                 console.log(e);
                 localStorage.clear();
+                setAuthData({
+                    "data": null,
+                    "status": "unauthorized"
+                });
             });
         } else {
             setAuthData({
@@ -65,12 +72,35 @@ function LoginProvider({children}) {
         });
     }
 
+    function refreshAuthData() {
+        const token = localStorage.getItem("token");
+
+        getUserInfo(token).then((userInfo) => {
+            console.log(userInfo);
+            setAuthData({
+                "data": {
+                    "email": userInfo.data.email,
+                    "username": userInfo.data.username
+                },
+                "status": "authorized"
+            });
+        }).catch((e) => {
+            console.log(e);
+            setAuthData({
+                "data": null,
+                "status": "unauthorized"
+            });
+            localStorage.clear();
+        });
+    }
+
 
     return (
         <LoginContext.Provider value={{
             authData,
             login,
             logout,
+            refreshAuthData
         }}>
             {authData.status === "pending" ?
                 <p>Loading</p>

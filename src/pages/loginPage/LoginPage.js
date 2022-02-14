@@ -23,11 +23,9 @@ function LoginPage() {
         }
     }, [authData]);
 
-
-    function testFunction() {
-        const data = getUserInfo(localStorage.getItem("token"));
-        console.log(data);
-    }
+    useEffect(() => {
+        setLoginErrors({error: false, message: ""});
+    }, []);
 
     return (
         <div className="login-container">
@@ -73,8 +71,6 @@ function LoginPage() {
             >
                 Registreren
             </button>
-
-            <button type="button" onClick={testFunction}>test</button>
         </div>
     );
 }
