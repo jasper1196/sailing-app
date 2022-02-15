@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
-html, body, #root, .app {
+html, body, #root {
   height: 100%;
+}
+
+p, label {
+  user-select: none;
 }

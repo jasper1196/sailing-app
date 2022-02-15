@@ -1,0 +1,76 @@
+.requirement-met {
+    color: green;
+}
+
+.requirement-not-met, .error-msg {
+    color: red;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container, .validation-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+    align-items: center;
+    margin: 5px 0px 5px 5px;
+}
+
+.input-container > label {
+    justify-self: flex-end;
+    font: var(--label-font);
+    color: var(--accent-one);
+}
+
+.input-fields {
+    background-color: var(--accent-three);
+    font: bold .9em sans-serif;
+    color: white;
+    border-style: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+}
+
+.input-fields:focus {
+    background-color: var(--accent-two);
+    color: white;
+    outline-style: none;
+    box-shadow: 0 0 5px 1px #CFD6FFFF;
+}
+
+.error-msg, .requirement-met, .requirement-not-met {
+    grid-column-start: 2;
+    font: var(--error-font);
+}
+
+.title {
+    font: var(--head-label-font);
+    color: var(--accent-one);
+    margin: 30px;
+}
+
+.submit-btn {
+    background-color: var(--accent-three);
+    font: bold 1em sans-serif;
+    color: white;
+    margin: 15px;
+    padding: 10px 15px 10px 15px;
+    border-style: none;
+    border-radius: 20px;
+}
+
+.submit-btn:hover {
+    cursor: pointer;
+    background-color: var(--accent-one);
+    box-shadow: 0 0 10px 1px #CFD6FFFF;
+}

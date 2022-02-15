@@ -1,6 +1,6 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import "./RegisterPage.css";
+import styles from "./RegisterPage.module.css";
 import registerUser from "../../tools/registerUser";
 import validateNumber from "../../tools/validateNumber";
 import validateUppercase from "../../tools/validateUppercase";
@@ -34,12 +34,13 @@ function RegisterPage() {
     const confirmationWatcher = watch("confirmation", "");
 
     return (
-        <div className="register-container">
-            <label>Registreren</label>
+        <div className={styles["main-container"]}>
+            <label className={styles.title}>Registreren</label>
             <form onSubmit={handleSubmit(onFormSubmit)}>
-                <div>
+                <div className={styles["input-container"]}>
                     <label htmlFor="username-reg">Gebruikersnaam</label>
                     <input
+                        className={styles["input-fields"]}
                         id="username-reg"
                         type="text"
                         {...register("username", {
@@ -54,11 +55,12 @@ function RegisterPage() {
                             }
                         })}
                     />
-                    {errors.username && <p className="error-msg">{errors.username.message}</p>}
+                    {errors.username && <p className={styles["error-msg"]}>{errors.username.message}</p>}
                 </div>
-                <div>
+                <div className={styles["input-container"]}>
                     <label htmlFor="email-reg">Email</label>
                     <input
+                        className={styles["input-fields"]}
                         id="email-reg"
                         type="text"
                         {...register("email", {
@@ -69,11 +71,12 @@ function RegisterPage() {
                             }
                         })}
                     />
-                    {errors.email && <p className="error-msg">{errors.email.message}</p>}
+                    {errors.email && <p className={styles["error-msg"]}>{errors.email.message}</p>}
                 </div>
-                <div>
+                <div className={styles["input-container"]}>
                     <label htmlFor="password-reg">Wachtwoord</label>
                     <input
+                        className={styles["input-fields"]}
                         id="password-reg"
                         type="password"
                         {...register("password",{
@@ -94,36 +97,37 @@ function RegisterPage() {
                             }
                         })}
                     />
-                    <div id="password-validation-rules">
-                        <p className={passwordWatcher.length >= 8 ? "requirement-met" : "requirement-not-met"}>
-                            Minimaal 8 karakter
-                        </p>
-                        <p className={validateUppercase(passwordWatcher) ? "requirement-met" : "requirement-not-met"}>
-                            Een hoofdletter
-                        </p>
-                        <p className={validateLowercase(passwordWatcher) ? "requirement-met" : "requirement-not-met"}>
-                            Een kleine letter
-                        </p>
-                        <p className={validateNumber(passwordWatcher) ? "requirement-met" : "requirement-not-met"}>
-                            Een cijfer
-                        </p>
-                        <p className={validateSpecial(passwordWatcher) ? "requirement-met" : "requirement-not-met"}>
-                            Een speciaal teken (!@#$%^&*()-.,+)
-                        </p>
-                        <p className={validateConfirmation(passwordWatcher, confirmationWatcher) ? "requirement-met" : "requirement-not-met"}>
-                            Wachtwoorden komen overeen
-                        </p>
-                    </div>
                 </div>
-                <div>
+                <div className={styles["validation-rules"]}>
+                    <p className={passwordWatcher.length >= 8 ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Minimaal 8 karakters
+                    </p>
+                    <p className={validateUppercase(passwordWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Een hoofdletter
+                    </p>
+                    <p className={validateLowercase(passwordWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Een kleine letter
+                    </p>
+                    <p className={validateNumber(passwordWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Een cijfer
+                    </p>
+                    <p className={validateSpecial(passwordWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Een speciaal teken (!@#$%^&*()-.,+)
+                    </p>
+                    <p className={validateConfirmation(passwordWatcher, confirmationWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Wachtwoorden komen overeen
+                    </p>
+                </div>
+                <div className={styles["input-container"]}>
                     <label htmlFor="password-confirmation">Herhaal Wachtwoord</label>
                     <input
+                        className={styles["input-fields"]}
                         id="password-confirmation"
                         type="password"
                         {...register("confirmation")}
                     />
                 </div>
-                <button type="submit">Registreren</button>
+                <button type="submit" className={styles["submit-btn"]}>Registreren</button>
             </form>
         </div>
     );

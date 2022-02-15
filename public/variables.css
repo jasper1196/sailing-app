@@ -3,4 +3,8 @@
     --accent-one: #000366;
     --accent-two: #B8C0E0;
     --accent-three: #BAB9B6;
+
+    --error-font: bold .9em sans-serif;
+    --label-font: bold 1em sans-serif;
+    --head-label-font: bold 2em sans-serif;
 }

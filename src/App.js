@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState, useRef} from "react";
-import './App.css';
+import styles from "./App.module.css";
 import TopBar from './components/topBar/TopBar.js';
 import ForecastPage from "./pages/forecastPage/ForecastPage";
 import LoginPage from "./pages/loginPage/LoginPage";
@@ -28,12 +28,12 @@ function App() {
     //TODO: catch if someone goes to another URL that is not specified in routes
 
     return (
-        <div className="app">
+        <div className={styles.app}>
             <Router>
                 <div className="header">
                     <TopBar locationHandler={setSearchLocation} />
                 </div>
-                <div className="body">
+                <div className={styles.body}>
                     <Routes>
                         <Route path="/*" element={<Navigate to="/forecast" />} />
                         <Route path="/forecast" element={<ForecastPage data={weatherData} />} />
