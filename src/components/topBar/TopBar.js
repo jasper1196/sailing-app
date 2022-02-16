@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import './TopBar.css';
+import React, {Fragment} from "react";
+import styles from './TopBar.module.css';
 import logo from '../../assets/logo.png';
 import TempUnitSelector from "../tempUnitSelector/TempUnitSelector";
 import WindPicker from "../windPicker/WindPicker";
@@ -13,20 +13,25 @@ function TopBar({locationHandler}) {
     const location = useLocation();
 
     return (
-        <div className="top-bar">
+        <div className={styles["top-bar"]}>
             <Link to="/forecast">
-                <img src={logo} alt="logo" id="logo-img"/>
+                <img src={logo} alt="logo" className={styles["logo-img"]}/>
             </Link>
-            <div
-                className="forecast-components"
-                id={location.pathname === "/forecast" ? "show" : "no-show"}
-            >
-                <SearchBar locationHandler={locationHandler}/>
-                <DynamicLoginButton />
-                <FavoriteIcon />
-                <TempUnitSelector/>
-                <WindPicker />
-            </div>
+
+            {location.pathname === "/forecast" &&
+                <Fragment>
+                    <SearchBar locationHandler={locationHandler}/>
+                    <div className={styles["forecast-components"]}>
+                        <DynamicLoginButton />
+                        <FavoriteIcon />
+                        <TempUnitSelector/>
+                        <WindPicker />
+                    </div>
+                </Fragment>
+
+            }
+
+
         </div>
     );
 }

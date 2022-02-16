@@ -23,7 +23,7 @@ form {
     grid-template-columns: 1fr 1fr;
     column-gap: 15px;
     align-items: center;
-    margin: 5px 0px 5px 5px;
+    margin: 5px 0 5px 5px;
 }
 
 .input-container > label {
@@ -45,6 +45,10 @@ form {
     background-color: var(--accent-two);
     color: white;
     outline-style: none;
+    box-shadow: 0 0 5px 1px #CFD6FFFF;
+}
+
+.input-fields:hover {
     box-shadow: 0 0 5px 1px #CFD6FFFF;
 }
 

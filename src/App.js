@@ -30,7 +30,7 @@ function App() {
     return (
         <div className={styles.app}>
             <Router>
-                <div className="header">
+                <div className={styles.header}>
                     <TopBar locationHandler={setSearchLocation} />
                 </div>
                 <div className={styles.body}>

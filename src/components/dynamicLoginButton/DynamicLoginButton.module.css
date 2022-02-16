@@ -1,0 +1,12 @@
+.login-link {
+    color: white;
+    text-decoration: none;
+    font: bold 1.1em sans-serif;
+    transition: all .2s ease-in-out;
+}
+
+.login-link:hover {
+    text-shadow: 0 0 10px var(--accent-two);
+    transform: scale(1.2);
+    transition: all .2s ease-in-out;
+}

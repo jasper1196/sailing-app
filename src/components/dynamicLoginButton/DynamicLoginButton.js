@@ -1,8 +1,8 @@
 import React, {Fragment, useContext} from "react";
 import {Link} from "react-router-dom";
 import {LoginContext} from "../../context/LoginProvider";
-import "./DynamicLoginButton.css";
-import AccountMenu from "../hamburgerMenu/AccountMenu";
+import styles from "./DynamicLoginButton.module.css";
+import AccountMenu from "../accountMenu/AccountMenu";
 
 function DynamicLoginButton() {
     const contextData = useContext(LoginContext);
@@ -12,7 +12,7 @@ function DynamicLoginButton() {
             {contextData.authData.status === "authorized" ?
                 <AccountMenu name={contextData.authData.data.username.charAt(0).toUpperCase() + contextData.authData.data.username.slice(1)} />
                 :
-                <Link id="go-to-login" to="/login">Inloggen</Link>
+                <Link className={styles["login-link"]} to="/login">Inloggen</Link>
             }
         </Fragment>
     );

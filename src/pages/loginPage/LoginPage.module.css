@@ -1,0 +1,80 @@
+.login-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    align-content: space-around;
+    flex-direction: column;
+}
+
+.form-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+    align-items: center;
+    margin: 5px 0 5px 5px;
+}
+
+.title {
+    font: var(--head-label-font);
+    color: var(--accent-one);
+    margin: 30px;
+}
+
+.form-btns {
+    background-color: var(--accent-three);
+    font: bold 1em sans-serif;
+    color: white;
+    margin: 15px;
+    padding: 10px 15px 10px 15px;
+    border-style: none;
+    border-radius: 20px;
+}
+
+.form-btns:hover {
+    cursor: pointer;
+    background-color: var(--accent-one);
+    box-shadow: 0 0 10px 1px #CFD6FFFF;
+}
+
+.form-fields > label {
+    justify-self: flex-end;
+    font: var(--label-font);
+    color: var(--accent-one);
+}
+
+.input-fields {
+    background-color: var(--accent-three);
+    font: bold .9em sans-serif;
+    color: white;
+    border-style: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+}
+
+.input-fields:focus {
+    background-color: var(--accent-two);
+    color: white;
+    outline-style: none;
+    box-shadow: 0 0 5px 1px #CFD6FFFF;
+}
+
+.input-fields:hover {
+    box-shadow: 0 0 5px 1px #CFD6FFFF;
+}
+
+.register-text {
+    font: var(--label-font);
+    color: var(--accent-one);
+    margin-top: 20px;
+}
+
+.login-errors {
+    grid-column-start: 2;
+    font: var(--error-font);
+    color: red;
+}

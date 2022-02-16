@@ -1,0 +1,54 @@
+.account-menu {
+    display: inline-block;
+    position: relative;
+    padding: 10px 5px 10px 5px;
+    border-radius: 10px 10px 0 0;
+}
+
+.welcome-msg {
+    display: flex;
+    color: white;
+    font: bold 1.1em sans-serif;
+    user-select: none;
+}
+
+.account-menu:hover .welcome-msg {
+    cursor: pointer;
+    text-shadow: 0 0 10px var(--accent-two);
+}
+
+.account-options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    padding: 5px;
+    position: absolute;
+    animation: fadeInMenu .25s ease-in;
+    background-color: rgba(184, 192, 224, .8);
+    border-radius: 10px;
+}
+
+@keyframes fadeInMenu {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+.option-btns {
+    border-style: none;
+    background-color: transparent;
+    font: var(--error-font);
+    padding: 7px 5px 7px 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    text-shadow: 0 0 2px var(--accent-one);
+    transition: all .4s ease-out;
+}
+
+.option-btns:hover {
+    outline-style: none;
+    color: var(--accent-one);
+    text-shadow: none;
+    background-color: var(--accent-three);
+    transition: all .2s ease-in;
+}
