@@ -1,12 +1,14 @@
-import React, {Fragment, useEffect, useRef, useState} from "react";
+import React, {Fragment, useContext, useEffect, useRef, useState} from "react";
 import "./ForecastSidebar.css";
 import Switcher from "../../components/switcher/Switcher";
 import convertEpoch from "../../tools/convertEpoch";
+import {FavoritesContext} from "../../context/FavoritesProvider";
 
 function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
     const [rangeValue, setRangeValue] = useState("1")
     const [time, setTime] = useState("");
     const [showLocationInfo, setShowLocationInfo] = useState(false);
+    const {addFavorite} = useContext(FavoritesContext);
     const isMounted = useRef(false);
 
 
@@ -42,6 +44,7 @@ function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
             {showLocationInfo &&
                 <Fragment>
                     <div className="location-information">
+                        <button type="button" onClick={() => {addFavorite("testloc 2")}}>add favorite</button>
                         <label id="city">{data.location_data.city}</label>
                         <label id="country">{data.location_data.country}</label>
                         <label id="date">{convertEpoch(data.location_data.epoch).date}</label>

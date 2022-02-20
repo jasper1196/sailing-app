@@ -5,14 +5,16 @@ import App from './App.js';
 import TempUnitProvider from "./context/TempUnitProvider.js";
 import WindUnitProvider from "./context/WindUnitProvider.js";
 import LoginProvider from "./context/LoginProvider";
-
+import FavoritesProvider from "./context/FavoritesProvider";
 
 ReactDOM.render(
     <React.StrictMode>
         <LoginProvider>
             <WindUnitProvider>
                 <TempUnitProvider>
-                    <App />
+                    <FavoritesProvider>
+                        <App />
+                    </FavoritesProvider>
                 </TempUnitProvider>
             </WindUnitProvider>
         </LoginProvider>

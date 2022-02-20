@@ -1,4 +1,5 @@
 import React, {useState, useContext, useEffect} from "react";
+import styles from "./WindPicker.module.css";
 import {WindUnitContext} from "../../context/WindUnitProvider";
 
 function WindPicker() {
@@ -38,25 +39,23 @@ function WindPicker() {
 
 
     return(
-        <div className="menu-wrapper">
+        <div
+            className={styles["wind-wrapper"]}
+            onMouseEnter={() => (toggleOpened(true))}
+            onMouseLeave={() => (toggleOpened(false))}
+        >
             <button
                 type="button"
-                className="menu-header"
-                onClick={() => {
-                    if (!opened) {
-                        toggleOpened(true);
-                    } else {
-                        toggleOpened(false);
-                    }
-                }}
+                className={styles["currently-selected"]}
             >
                 {selectedOption}
             </button>
             {opened &&
-                <div>
+                <div className={styles["wind-options"]}>
                     {windUnits.map((entry) => (
                         <button
                             type="button"
+                            className={styles["option-btns"]}
                             key={entry.id}
                             onClick={() => {
                                 toggleOpened(false)

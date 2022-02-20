@@ -1,4 +1,5 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {Fragment, useContext, useEffect, useState} from "react";
+import styles from "./TempUnitSelector.module.css";
 import {TempUnitContext} from "../../context/TempUnitProvider";
 
 function TempUnitSelector() {
@@ -10,15 +11,15 @@ function TempUnitSelector() {
     }, [isCelsius]);
 
     return (
-        <div>
+        <Fragment>
             <button
                 type="button"
-                className="temp-switcher"
+                className={styles.switcher}
                 onClick={() => {setIsCelsius(!isCelsius)}}
             >
                 {isCelsius ? "°C" : "°F"}
             </button>
-        </div>
+        </Fragment>
     );
 }
 

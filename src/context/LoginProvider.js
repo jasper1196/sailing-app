@@ -29,7 +29,7 @@ function LoginProvider({children}) {
                 });
             }).catch((e) => {
                 console.log(e);
-                localStorage.clear();
+                localStorage.removeItem("token");
                 setAuthData({
                     "data": null,
                     "status": "unauthorized"
@@ -65,7 +65,7 @@ function LoginProvider({children}) {
     }
 
     function logout() {
-        localStorage.clear();
+        localStorage.removeItem("token");
         setAuthData({
             "data": null,
             "status": "unauthorized"
@@ -90,7 +90,7 @@ function LoginProvider({children}) {
                 "data": null,
                 "status": "unauthorized"
             });
-            localStorage.clear();
+            localStorage.removeItem("token");
         });
     }
 

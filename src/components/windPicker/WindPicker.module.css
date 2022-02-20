@@ -1,26 +1,26 @@
-.account-menu {
+.wind-wrapper {
     display: inline-block;
     position: relative;
-    padding: 10px 5px 10px 5px;
-    border-radius: 10px 10px 0 0;
+    padding: 10px;
 }
 
-.welcome-msg {
-    display: flex;
+.currently-selected {
     color: white;
-    font: bold 1.1em sans-serif;
-    user-select: none;
+    text-decoration: none;
+    font: var(--top-bar-font);
     transition: all .2s ease-in-out;
+    background: transparent;
+    border-style: none;
 }
 
-.account-menu:hover .welcome-msg {
+.wind-wrapper:hover .currently-selected {
     cursor: pointer;
     text-shadow: 0 0 10px var(--accent-two);
     transform: scale(1.2);
     transition: all .2s ease-in-out;
 }
 
-.account-options {
+.wind-options {
     display: flex;
     flex-direction: column;
     margin-top: 5px;
@@ -29,6 +29,7 @@
     animation: fadeInMenu .25s ease-in;
     background-color: rgba(184, 192, 224, .8);
     border-radius: 10px;
+    transform: translateX(-25%);
 }
 
 @keyframes fadeInMenu {

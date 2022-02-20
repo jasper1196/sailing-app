@@ -23,7 +23,7 @@ function TopBar({locationHandler}) {
                     <SearchBar locationHandler={locationHandler}/>
                     <div className={styles["forecast-components"]}>
                         <DynamicLoginButton />
-                        <FavoriteIcon />
+                        <FavoriteIcon locationHandler={locationHandler} />
                         <TempUnitSelector/>
                         <WindPicker />
                     </div>

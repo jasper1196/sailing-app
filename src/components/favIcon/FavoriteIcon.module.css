@@ -1,0 +1,29 @@
+.star {
+    width: 2em;
+    height: 2em;
+    fill: white;
+    transition: all .2s ease-in-out;
+}
+
+.star:hover {
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px var(--accent-two));
+    transform: scale(1.2);
+    transition: all .2s ease-in-out;
+}
+
+.locations {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(184, 192, 224, .8);
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    transform: translateX(-35%);
+}
+
+.favorite-wrapper {
+    display: inline-block;
+    position: relative;
+}
