@@ -25,8 +25,6 @@ function App() {
 
     }, [searchLocation]);
 
-    //TODO: catch if someone goes to another URL that is not specified in routes
-
     return (
         <div className={styles.app}>
             <Router>

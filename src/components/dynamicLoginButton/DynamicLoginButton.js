@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {LoginContext} from "../../context/LoginProvider";
 import styles from "./DynamicLoginButton.module.css";
 import AccountMenu from "../accountMenu/AccountMenu";
+import capitalizeString from "../../tools/capitalizeString";
 
 function DynamicLoginButton() {
     const contextData = useContext(LoginContext);
@@ -10,7 +11,7 @@ function DynamicLoginButton() {
     return (
         <Fragment>
             {contextData.authData.status === "authorized" ?
-                <AccountMenu name={contextData.authData.data.username.charAt(0).toUpperCase() + contextData.authData.data.username.slice(1)} />
+                <AccountMenu name={capitalizeString(contextData.authData.data.username)} />
                 :
                 <Link className={styles["login-link"]} to="/login">Inloggen</Link>
             }

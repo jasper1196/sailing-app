@@ -1,0 +1,53 @@
+.sidebar {
+    background-color: var(--accent-two);
+    width: 150px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+}
+
+.range-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.location-information {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.city-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.star {
+    fill: white;
+    margin-left: 10px;
+    transition: all .2s ease-in-out;
+}
+
+.star:hover {
+    filter: drop-shadow(0 0 5px var(--accent-one));
+    transform: scale(1.2);
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.disabled-star {
+    opacity: .5;
+}
+
+.disabled-star:hover {
+    filter: none;
+    transform: none;
+    cursor: default;
+}
+
+.info-text {
+    font: var(--label-font);
+}

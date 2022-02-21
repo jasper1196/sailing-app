@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 import styles from './TopBar.module.css';
 import logo from '../../assets/logo.png';
 import TempUnitSelector from "../tempUnitSelector/TempUnitSelector";
@@ -10,6 +10,7 @@ import DynamicLoginButton from "../dynamicLoginButton/DynamicLoginButton";
 
 
 function TopBar({locationHandler}) {
+    const [locationValue, setLocationValue] = useState("");
     const location = useLocation();
 
     return (
@@ -20,11 +21,11 @@ function TopBar({locationHandler}) {
 
             {location.pathname === "/forecast" &&
                 <Fragment>
-                    <SearchBar locationHandler={locationHandler}/>
+                    <SearchBar locationHandler={locationHandler} locationValue={locationValue}/>
                     <div className={styles["forecast-components"]}>
                         <DynamicLoginButton />
-                        <FavoriteIcon locationHandler={locationHandler} />
-                        <TempUnitSelector/>
+                        <FavoriteIcon locationHandler={locationHandler} setLocationValue={setLocationValue}/>
+                        <TempUnitSelector />
                         <WindPicker />
                     </div>
                 </Fragment>

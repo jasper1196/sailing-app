@@ -1,0 +1,13 @@
+.forecast-page {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    flex: 1;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex: 1;
+}

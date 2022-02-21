@@ -19,10 +19,10 @@ function FavoritesProvider({children}) {
 
     function addFavorite(favorite) {
 
-        if (favorites.hasOwnProperty("loc5")) {
+        if (favorites.length > 4) {
             console.log("teveel favorieten");
         } else {
-            if (JSON.stringify(favorites) === "{}") {
+            if (!favorites.hasOwnProperty("loc1")) {
                 setFavorites({...favorites, loc1: favorite});
             } else if (!favorites.hasOwnProperty("loc2")) {
                 setFavorites({...favorites, loc2: favorite});

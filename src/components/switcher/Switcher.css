@@ -9,7 +9,7 @@
 }
 
 .options {
-    font-size: .8em;
+    font: bold .8em sans-serif;
     cursor: inherit;
     display: inline-block;
     padding: 2px 4px 4px 4px;

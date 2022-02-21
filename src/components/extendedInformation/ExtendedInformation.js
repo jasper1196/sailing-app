@@ -13,11 +13,15 @@ function ExtendedInformation({data}) {
 
     console.log(selectedWindUnit);
 
+    //TODO: create tooltips
+
     return (
         <div
             className="extended-information"
         >
-            <label>{data.date}</label>
+            <label className="date">{data.date}
+                <span className="tooltip">Datum</span>
+            </label>
             <label>{data.time}</label>
             <label>{changeTempUnit(data.temperature)}</label>
             <img src={data.icon} />

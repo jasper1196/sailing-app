@@ -1,13 +1,10 @@
 import React, {useEffect, useRef, useState, useContext, Fragment} from "react";
-import "./ForecastPage.css";
+import styles from "./ForecastPage.module.css";
 import ForecastSidebar from "../../components/forecastSidebar/ForecastSidebar";
 import DefaultInformation from "../../components/defaultInformation/DefaultInformation";
 import ExtendedInformation from "../../components/extendedInformation/ExtendedInformation";
 import prepData from "../../tools/prepData";
 import {TempUnitContext} from "../../context/TempUnitProvider";
-import WindIcon from "../../components/windIcon/WindIcon";
-import getSunscreenAdvise from "../../tools/getSunscreenAdvise";
-import getSailgrade from "../../tools/getSailgrade";
 
 
 function ForecastPage({data}) {
@@ -32,8 +29,10 @@ function ForecastPage({data}) {
 
     }, [data]);
 
+    //TODO: create tooltips
+
     return (
-        <div className="forecast-page">
+        <div className={styles["forecast-page"]}>
             <ForecastSidebar
                 defaultView={defaultView}
                 switchView={setDefaultView}
@@ -42,20 +41,13 @@ function ForecastPage({data}) {
             />
             {dataLoaded &&
 
-                <div className="forecast">
+                <div className={styles.forecast}>
                     {defaultView ?
 
                         prepData(data, forecastHours, false).map((hourData, index) => {
                         if (index === 0) {
                             return (
                                 <Fragment>
-                                    <DefaultInformation
-                                        key="row-info-default"
-                                        date="datum"
-                                        time="tijd"
-                                        temp="temperatuur"
-                                        desc="beschrijving"
-                                    />
                                     <DefaultInformation
                                         key={hourData.key}
                                         date={hourData.date}
@@ -83,24 +75,6 @@ function ForecastPage({data}) {
                             if (index === 0) {
                                 return (
                                     <Fragment>
-                                        <div
-                                            className="extended-information"
-                                        >
-                                            <label>Datum</label>
-                                            <label>Tijd</label>
-                                            <label>Temperatuur</label>
-                                            <label>Icoon</label>
-                                            <label>Beschrijving</label>
-                                            <label>Windkracht</label>
-                                            <label>Windroos</label>
-                                            <label>Windrichting</label>
-                                            <label>Kracht vlagen</label>
-                                            <label>Bewolking</label>
-                                            <label>Neerslag</label>
-                                            <label>Zonnenbrand advies</label>
-                                            <label>Factor</label>
-                                            <label>Zeilcijfer</label>
-                                        </div>
                                         <ExtendedInformation
                                             key={hourData.key}
                                             data={hourData}

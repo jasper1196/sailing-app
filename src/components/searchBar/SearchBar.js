@@ -1,17 +1,24 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./SearchBar.css";
 import {ReactComponent as SearchIcon} from "../../assets/seachIcon.svg";
 
-function SearchBar({locationHandler}) {
+function SearchBar({locationHandler, locationValue}) {
     const [locationInput, setLocationInput] = useState("");
 
     function getLocationForecast() {
         if (locationInput !== "") {
             locationHandler(locationInput);
+            setLocationInput("");
         } else {
             console.log("empty");
         }
     }
+
+    useEffect(() => {
+        if (locationValue !== "") {
+            setLocationInput("");
+        }
+    }, [locationValue])
 
     return (
         <div className="search-bar">

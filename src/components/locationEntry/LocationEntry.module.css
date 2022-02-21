@@ -19,6 +19,7 @@
     color: white;
     padding: 5px;
     transition: all .4s ease-in;
+    white-space: nowrap;
 }
 
 .entry:hover .entry-text, .remove-entry-btn {

@@ -1,5 +1,6 @@
 import React, {Fragment, useContext, useEffect, useRef, useState} from "react";
-import "./ForecastSidebar.css";
+import styles from "./ForecastSidebar.module.css";
+import {ReactComponent as Star} from "../../assets/emptyStar.svg";
 import Switcher from "../../components/switcher/Switcher";
 import convertEpoch from "../../tools/convertEpoch";
 import {FavoritesContext} from "../../context/FavoritesProvider";
@@ -8,7 +9,7 @@ function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
     const [rangeValue, setRangeValue] = useState("1")
     const [time, setTime] = useState("");
     const [showLocationInfo, setShowLocationInfo] = useState(false);
-    const {addFavorite} = useContext(FavoritesContext);
+    const {addFavorite, getFavoritesArray} = useContext(FavoritesContext);
     const isMounted = useRef(false);
 
 
@@ -38,21 +39,30 @@ function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
         setTimeout(startClock, 1000);
     }
 
+    //TODO: on first opening show text to search before data will be shown or default location data (default is preferred)
+
     return (
-        <div className="sidebar">
+        <div className={styles.sidebar}>
 
             {showLocationInfo &&
                 <Fragment>
-                    <div className="location-information">
-                        <button type="button" onClick={() => {addFavorite("testloc 2")}}>add favorite</button>
-                        <label id="city">{data.location_data.city}</label>
-                        <label id="country">{data.location_data.country}</label>
-                        <label id="date">{convertEpoch(data.location_data.epoch).date}</label>
-                        <label id="day">{days[new Date(data.location_data.epoch).getDay()]}</label>
-                        <label id="time">{time}</label>
+                    <div className={styles["location-information"]}>
+                        <div className={styles["city-wrapper"]}>
+                            <label className={styles["info-text"]} id="city">{data.location_data.city}</label>
+                            <Star
+                                className={`${styles.star} ${getFavoritesArray().length > 4 && styles["disabled-star"]}`}
+                                onClick={() => {addFavorite(data.location_data.city)}}
+                            >
+                                add favorite
+                            </Star>
+                        </div>
+                        <label className={styles["info-text"]} id="country">{data.location_data.country}</label>
+                        <label className={styles["info-text"]} id="date">{convertEpoch(data.location_data.epoch).date}</label>
+                        <label className={styles["info-text"]} id="day">{days[new Date(data.location_data.epoch).getDay()]}</label>
+                        <label className={styles["info-text"]} id="time">{time}</label>
                     </div>
-                    <div className="range-container">
-                        <label id="hour-indicator">{valueToHours(rangeValue)} uur</label>
+                    <div className={styles["range-container"]}>
+                        <label className={styles["info-text"]} id="hour-indicator">{valueToHours(rangeValue)} uur</label>
                         <input
                             type="range"
                             min="1"
