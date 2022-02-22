@@ -1,8 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
-import "./AccountPage.css"
+import styles from "./AccountPage.module.css"
 import {LoginContext} from "../../context/LoginProvider";
 import {useForm} from "react-hook-form";
 import changeUserData from "../../tools/changeUserData";
+import capitalizeString from "../../tools/capitalizeString";
 
 function AccountPage() {
     const {authData, logout, refreshAuthData} = useContext(LoginContext);
@@ -34,25 +35,44 @@ function AccountPage() {
         });
     }
 
-    //TODO: CHANGE PASSWORD
-
     return (
-        <div className="info-container">
-            <form onSubmit={handleSubmit(onFormSubmit)}>
-                <label htmlFor="username-info">Gebruikersnaam</label>
-                <label id="username-info">{defaultValues.username}</label>
-                <label htmlFor="email-info">Mailadres</label>
-                <input
-                    id="email-info"
-                    type="text"
-                    {...register("email")}
-                />
+        <div className={styles["info-container"]}>
+            <form
+                className={styles.form}
+                onSubmit={handleSubmit(onFormSubmit)}
+            >
+                <div className={styles["info-fields"]}>
+                    <label
+                        className={styles["info-labels"]}
+                        htmlFor="username-info"
+                    >
+                        Gebruikersnaam:
+                    </label>
+                    <label className={styles.username}>{capitalizeString(defaultValues.username)}</label>
+                </div>
+                <div className={styles["info-fields"]}>
+                    <label
+                        className={styles["info-labels"]}
+                        htmlFor="email-info"
+                    >
+                        Email:
+                    </label>
+                    <input
+                        className={styles.email}
+                        id="email-info"
+                        type="text"
+                        {...register("email")}
+                    />
+                </div>
+
+
+
 
                 {fieldsChanged &&
-                    <div>
-                        <button type="submit">Email wijzigen</button>
+                    <div className={styles["info-fields"]}>
+                        <button className={styles.btns} type="submit">Email wijzigen</button>
                         <button
-                            type="button"
+                            className={styles.btns} type="button"
                             onClick={() => {reset(defaultValues)}}
                         >
                             Wijzigen annuleren
@@ -60,7 +80,7 @@ function AccountPage() {
                     </div>
                 }
             </form>
-            <button type="button" onClick={logout}>Uitloggen</button>
+            <button className={styles.btns} type="button" onClick={logout}>Uitloggen</button>
         </div>
     );
 }

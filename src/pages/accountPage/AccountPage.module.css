@@ -1,39 +1,35 @@
-.requirement-met {
-    color: green;
-}
-
-.requirement-not-met, .error-msg {
-    color: red;
-}
-
-.main-container {
+.info-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    row-gap: 20px;
     flex: 1;
 }
 
-form {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
+.form {
+    row-gap: 10px;
 }
 
-.input-container, .validation-rules {
+.info-fields {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 15px;
     align-items: center;
-    margin: 5px 0 5px 5px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
 }
 
-.input-container > label {
+.info-labels {
     justify-self: flex-end;
-    font: var(--label-font);
+    font: var(--info-font);
     color: var(--accent-one);
 }
 
-.input-fields {
+.username {
+    font: var(--label-font);
+    color: var(--accent-one);
+    text-shadow: 0 5px 5px var(--accent-two);
+}
+
+.email {
     background-color: var(--accent-three);
     font: bold .9em sans-serif;
     color: white;
@@ -42,39 +38,27 @@ form {
     border-radius: 15px;
 }
 
-.input-fields:focus {
+.email:focus {
     background-color: var(--accent-two);
     color: white;
     outline-style: none;
     box-shadow: 0 0 5px 1px #CFD6FFFF;
 }
 
-.input-fields:hover {
+.email:hover {
     box-shadow: 0 0 5px 1px #CFD6FFFF;
 }
 
-.error-msg, .requirement-met, .requirement-not-met {
-    grid-column-start: 2;
-    font: var(--error-font);
-}
-
-.title {
-    font: var(--head-label-font);
-    color: var(--accent-one);
-    margin: 30px;
-}
-
-.submit-btn {
+.btns {
     background-color: var(--accent-three);
-    font: bold 1em sans-serif;
+    font: bold .7em sans-serif;
     color: white;
-    margin: 15px;
-    padding: 10px 15px 10px 15px;
+    padding: 10px ;
     border-style: none;
     border-radius: 20px;
 }
 
-.submit-btn:hover {
+.btns:hover {
     cursor: pointer;
     background-color: var(--accent-one);
     box-shadow: 0 0 10px 1px #CFD6FFFF;

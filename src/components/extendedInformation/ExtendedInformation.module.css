@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-evenly;
+    row-gap: 10px;
+    background-color: var(--accent-two);
+    border-radius: 20px;
+}
+
+.tooltips {
+    position: absolute;
+    display: inline-block;
+    opacity: 0;
+    z-index: 1;
+    margin-left: 10px;
+    font: var(--error-font);
+    background-color: var(--accent-three);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    transition: all .5s ease-out;
+}
+
+.labels {
+    font: var(--info-font);
+}
+
+.labels:hover .tooltips {
+    opacity: 1;
+    transition: all .2s ease-in .5s;
+}
+
+.weather-icon {
+    user-select: none;
+    transform: scale(1.4);
+
+}
