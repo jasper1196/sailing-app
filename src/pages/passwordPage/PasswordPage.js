@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from "react";
 import {useForm} from "react-hook-form";
+import styles from "./PasswordPage.module.css";
 import validateUppercase from "../../tools/validateUppercase";
 import validateLowercase from "../../tools/validateLowercase";
 import validateSpecial from "../../tools/validateSpecial";
@@ -29,10 +30,15 @@ function PasswordPage() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(onFromSubmit)}>
-                <label>Nieuw wachtwoord</label>
+        <div className={styles["form-wrapper"]}>
+            <label className={styles.title}>Wachtwoord wijzigen</label>
+            <form
+                className={styles["password-form"]}
+                onSubmit={handleSubmit(onFromSubmit)}
+            >
+                <label className={styles["label-text"]}>Nieuw wachtwoord</label>
                 <input
+                    className={`${ styles["input-fields"]} ${styles["new-password"]}`}
                     id="new-password"
                     type="password"
                     {...register("password", {
@@ -53,36 +59,40 @@ function PasswordPage() {
                         }
                     })}
                 />
-                <div id="password-validation-rules">
-                    <p className={passwordWatcher.length >= 8 ? "requirement-met" : "requirement-not-met"}>
-                        Minimaal 8 karakter
-                    </p>
-                    <p className={validateUppercase(passwordWatcher) ? "requirement-met" : "requirement-not-met"}>
-                        Een hoofdletter
-                    </p>
-                    <p className={validateLowercase(passwordWatcher) ? "requirement-met" : "requirement-not-met"}>
-                        Een kleine letter
-                    </p>
-                    <p className={validateNumber(passwordWatcher) ? "requirement-met" : "requirement-not-met"}>
-                        Een cijfer
-                    </p>
-                    <p className={validateSpecial(passwordWatcher) ? "requirement-met" : "requirement-not-met"}>
-                        Een speciaal teken (!@#$%^&*()-.,+)
-                    </p>
-                    <p className={validateConfirmation(passwordWatcher, confirmationWatcher) ? "requirement-met" : "requirement-not-met"}>
-                        Wachtwoorden komen overeen
-                    </p>
-                </div>
-                <label>Nieuw wachtwoord</label>
+                <label className={styles["label-text"]}>Herhaal wachtwoord</label>
                 <input
+                    className={styles["input-fields"]}
                     id="confirmation-password"
                     type="password"
                     {...register("confirmation", {
                         required: true
                     })}
                 />
-                <button type="submit">Wijzigen</button>
-                <button type="button">Annuleren</button>
+                <div className={styles["password-validation-rules"]}>
+                    <p className={passwordWatcher.length >= 8 ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Minimaal 8 karakter
+                    </p>
+                    <p className={validateUppercase(passwordWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Een hoofdletter
+                    </p>
+                    <p className={validateLowercase(passwordWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Een kleine letter
+                    </p>
+                    <p className={validateNumber(passwordWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Een cijfer
+                    </p>
+                    <p className={validateSpecial(passwordWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Een speciaal teken (!@#$%^&*()-.,+)
+                    </p>
+                    <p className={validateConfirmation(passwordWatcher, confirmationWatcher) ? styles["requirement-met"] : styles["requirement-not-met"]}>
+                        &bull; Wachtwoorden komen overeen
+                    </p>
+                </div>
+                <div className={styles["btn-wrapper"]}>
+                    <button className={styles["form-btns"]} type="submit">Wijzigen</button>
+                    <button className={styles["form-btns"]} type="button">Annuleren</button>
+                </div>
+
 
             </form>
         </div>

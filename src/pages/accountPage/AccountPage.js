@@ -37,6 +37,7 @@ function AccountPage() {
 
     return (
         <div className={styles["info-container"]}>
+            <label className={styles.title}>Mijn Account</label>
             <form
                 className={styles.form}
                 onSubmit={handleSubmit(onFormSubmit)}

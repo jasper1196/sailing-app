@@ -50,4 +50,5 @@
 
 .info-text {
     font: var(--label-font);
+    color: var(--accent-one);
 }

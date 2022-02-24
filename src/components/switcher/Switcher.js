@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./Switcher.css"
 
 function Switcher(props) {
@@ -14,14 +14,14 @@ function Switcher(props) {
         <div className="switch">
             <label
                 className="options"
-                id={selectedOption ? "highlighted" : ""}
+                id={selectedOption ? "highlighted" : "not-highlighted"}
                 onClick={() => (switchView())}
             >
                 {props.option1}
             </label>
             <label
                 className="options"
-                id={selectedOption ? "" : "highlighted" }
+                id={selectedOption ? "not-highlighted" : "highlighted" }
                 onClick={() => (switchView())}
             >
                 {props.option2}

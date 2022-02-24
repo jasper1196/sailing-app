@@ -28,6 +28,7 @@
 
 .labels {
     font: var(--info-font);
+    color: var(--accent-one);
 }
 
 .labels:hover .tooltips {
