@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Installatiehandleiding
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Inleiding
 
-## Available Scripts
+Met deze applicatie kan de meest relevante weersvoorspelling voor het zeilen worden opgehaald. 
+Door middel van de zoekbalk kan een locatie worden opgezocht om de actuele weersvoorspelling op te halen.\
+Zoals in de screenshot te zien is wordt de meest relevante informatie weergegeven.
 
-In the project directory, you can run:
+![](src/assets/screenshot.png)
+
+
+##Benodigdheden
+
+###API key
+Er wordt gebruik gemaakt van https://weatherapi.com/ om de weerdata op te halen.\
+De API key die hiervoor gebruikt kan worden is: d3da91da0b824e72ac2211303212911\
+Indien een API key aangemaakt moet worden, maak dan op https://weatherapi.com/ een account aan en genereer een key.
+
+
+###Backend
+Voor de applicatie wordt de algemeen toegankelijke NOVI backend gebruikt. 
+Hiervoor zijn geen inloggegevens beschikbaar.\
+Ga naar https://github.com/hogeschoolnovi/novi-educational-backend-documentation/ voor de backend documentatie.
+
+###Node.js
+Om de applicatie te kunnen runnen moet Node.js geïnstalleerd zijn op het systeem.\
+Ga naar https://nodejs.org/en/download/ om Node.js te installeren.
+
+
+##Installatie
+1. Open een `terminal` venster
+2. Ga naar de `project folder`
+3. Voer het volgende commando uit `npm install`
+4. Open het bestand `.env.dist` 
+5. Vul na `REACT_APP_WEATHER_API_KEY` de API key in
+6. Ga terug naar het `terminal` venster
+7. Voer het volgende commando uit `npm start`
+8. Een browservenster opent automatisch waarin de applicatie draait\
+_Indien dit niet het geval is ga naar http://localhost:3000/ in je browser._
+
+
+##Inloggegevens
+Er zijn geen bestaande inloggegevens. De backend die wordt gebruikt voor de authenticatie verwijderd ongeveer elk uur alle gegevens.
+
+
+##Beschikbare npm commando's
+
+In de project folder zijn de volgende commando's beschikbaar:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Draait de applicatie in de ontwikkel modus.\
+Open [http://localhost:3000](http://localhost:3000) om het weer te geven in de browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+De pagina herlaad wanneer je aanpassingen maakt.\
+Ook in de console lint errors weergegeven.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Start de tester in de interactieve meekijk modus.\
+Zie [tests draaien](https://facebook.github.io/create-react-app/docs/running-tests) voor meer informatie.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Bouwt de applicatie voor productie naar de `build` folder.\
+Het bundelt React in productie modus en optimaliseert voor de beste prestaties.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+De build is verkleind en de bestandsnamen worden meegenomen in de hashes.\
+De applicatie is klaar om uitgerold te worden!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Zie [uitrollen](https://facebook.github.io/create-react-app/docs/deployment) voor meer informatie
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Pas op: deze operatie is eenmalig en kan niet teruggedraaid worden!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Indien je niet tevreden bent met de build tool en configruatie keuzen, dan kan je op elk moment `eject` draaien. Dit commando verwijdert de single build dependency uit je project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+In plaats daarvan kopieert het alle configuratiebestanden en dependencies direct in je project zodat je er de volledige controle over hebt. Alle commando's werken nog behalve `eject`, ze wijzen nu echter naar de gekopieerde bestanden. Je kan ze hier ook aanpassen maar je staat er dan wel alleen voor.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Je zal nooit `eject` hoeven gebruiken. De samengestelde functieset is meer dan genoeg dus voel je niet verplicht deze functie te gebruiken. Gebruik het alleen wanneer je er zelf klaar voor bent en de noodzaak ervoor is.
