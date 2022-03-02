@@ -4,10 +4,9 @@ import styles from "./FavoriteIcon.module.css";
 import {FavoritesContext} from "../../context/FavoritesProvider";
 import LocationEntry from "../locationEntry/LocationEntry";
 
-function FavoriteIcon({locationHandler, setLocationValue}) {
+function FavoriteIcon({setSearchLocation, setLocationValue}) {
     const [opened, setOpened] = useState(false);
     const {getFavoritesArray} = useContext(FavoritesContext);
-
 
     return (
         <div
@@ -19,8 +18,7 @@ function FavoriteIcon({locationHandler, setLocationValue}) {
             {opened &&
                 <div className={styles.locations}>
                     {getFavoritesArray().map((location) => (
-                        <LocationEntry location={location} locationHandler={locationHandler} setLocationValue={setLocationValue}/>
-                        //TODO: make component that can be clicked etc.
+                        <LocationEntry location={location} setSearchLocation={setSearchLocation} setLocationValue={setLocationValue}/>
                     ))}
                 </div>
             }

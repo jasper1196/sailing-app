@@ -11,25 +11,23 @@ function ForecastPage({data}) {
     const [defaultView, setDefaultView] = useState(true);
     const [forecastHours, setForecastHours] = useState(6);
     const [dataLoaded, setDataLoaded] = useState(false);
+    const [dataError, setDataError] = useState(false);
     const {changeTempUnit} = useContext(TempUnitContext);
     const isMounted = useRef(false);
 
     useEffect(() => {
         if (isMounted.current) {
-            if (!data.empty) {
-                console.log(data);
-                setDataLoaded(true);
-            } else {
-                console.log(data);
-                //TODO: error loading data try again something like this
+            if (data !== undefined) {
+                if (!data.empty) {
+                    setDataLoaded(true);
+                } else {
+                    setDataError(true);
+                }
             }
         } else {
             isMounted.current = true;
         }
-
     }, [data]);
-
-    //TODO: create tooltips
 
     return (
         <div className={styles["forecast-page"]}>
@@ -39,11 +37,9 @@ function ForecastPage({data}) {
                 changeForecastRange={setForecastHours}
                 data={data}
             />
-            {dataLoaded &&
-
+            {dataLoaded ?
                 <div className={styles.forecast}>
                     {defaultView ?
-
                         prepData(data, forecastHours, false).map((hourData, index) => {
                         if (index === 0) {
                             return (
@@ -68,9 +64,7 @@ function ForecastPage({data}) {
                                 />
                             )
                         }})
-
                         :
-
                         prepData(data, forecastHours, true).map((hourData, index) => {
                             if (index === 0) {
                                 return (
@@ -93,11 +87,15 @@ function ForecastPage({data}) {
                         })
                     }
                 </div>
-
-
-
+                :
+                <div className={styles.forecast}>
+                    {dataError ?
+                        <label className={styles["instruction-text"]}>Er ies iets fout gegaan bij het ophalen van de data probeer het nogmaals.</label>
+                        :
+                        <label className={styles["instruction-text"]}>Zoek een locatie om een weersvoorspelling te zien.</label>
+                    }
+                </div>
             }
-
         </div>
     );
 }

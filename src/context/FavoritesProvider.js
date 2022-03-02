@@ -34,8 +34,6 @@ function FavoritesProvider({children}) {
                 setFavorites({...favorites, loc5: favorite});
             }
         }
-
-        console.log("favorite added");
     }
 
     function remFavorite(locationKey) {

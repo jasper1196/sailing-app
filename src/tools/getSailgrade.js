@@ -1,6 +1,6 @@
 function getSailgrade(wind, gusts, temp, precip) {
     const windRate = getWindRate(wind, gusts);
-    const tempRate = getWindRate(temp);
+    const tempRate = getTempRate(temp);
     const rainRate = getRainRate(precip);
 
     const rate = (windRate + tempRate + rainRate) / 3;

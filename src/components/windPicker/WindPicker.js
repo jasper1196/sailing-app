@@ -7,7 +7,6 @@ function WindPicker() {
     const [selectedOption, selectOption] = useState(selectedWindUnit);
     const [opened, toggleOpened] = useState(false);
 
-
     const windUnits = [
         {
             "unit": "Bft",
@@ -36,7 +35,6 @@ function WindPicker() {
         selectWindUnit(selectedOption);
 
     }, [selectedOption]);
-
 
     return(
         <div

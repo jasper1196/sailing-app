@@ -2,15 +2,13 @@ import React, {useEffect, useState} from "react";
 import "./SearchBar.css";
 import {ReactComponent as SearchIcon} from "../../assets/seachIcon.svg";
 
-function SearchBar({locationHandler, locationValue}) {
+function SearchBar({setSearchLocation, locationValue}) {
     const [locationInput, setLocationInput] = useState("");
 
     function getLocationForecast() {
         if (locationInput !== "") {
-            locationHandler(locationInput);
+            setSearchLocation(locationInput);
             setLocationInput("");
-        } else {
-            console.log("empty");
         }
     }
 

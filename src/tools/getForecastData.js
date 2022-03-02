@@ -1,22 +1,25 @@
 import axios from "axios";
-import testData from "../forecast.json"
 
-function getForecastData(timeWindow, location) {
+async function getForecastData(timeWindow, location) {
+    let weatherData = {empty: true};
+
     try {
-//        const data = fetchData(location);
-
-        return (filterData(testData));
+        const data = await fetchData(location);
+        if (data) {
+            return (filterData(data.data));
+        } else {
+            return weatherData;
+        }
     } catch (e) {
-        console.error(e);
+        console.log(e);
+        return weatherData;
     }
-    return ({empty: true});
 }
 
 async function fetchData(location) {
     const forecastData = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${location}&days=10&lang=nl`);
     return (forecastData);
 }
-
 
 function filterData(data) {
     const locationData = {

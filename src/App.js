@@ -18,23 +18,28 @@ function App() {
 
     useEffect(() => {
         if (isMounted.current) {
-            setWeatherData(getForecastData("5", searchLocation));
+            getForecastData("5", searchLocation).then((data) => {
+                if (data) {
+                    setWeatherData(data);
+                }
+            }).catch((e) => {
+                console.log(e);
+            })
         } else {
             isMounted.current = true;
         }
-
     }, [searchLocation]);
 
     return (
         <div className={styles.app}>
             <Router>
                 <div className={styles.header}>
-                    <TopBar locationHandler={setSearchLocation} />
+                    <TopBar setSearchLocation={setSearchLocation} />
                 </div>
                 <div className={styles.body}>
                     <Routes>
                         <Route path="/*" element={<Navigate to="/forecast" />} />
-                        <Route path="/forecast" element={<ForecastPage data={weatherData} />} />
+                        <Route path="/forecast" element={<ForecastPage data={weatherData} setSearchLocation={setSearchLocation} />} />
                         <Route path="/login" element={authData.status !== "authorized" ? <LoginPage /> : <Navigate to="/forecast" />}/>
                         <Route path="/register" element={<RegisterPage />}/>
                         <Route path="/account" element={authData.status === "authorized" ? <AccountPage /> : <Navigate to="/login" />} />

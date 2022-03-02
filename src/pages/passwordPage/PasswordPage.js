@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import {useForm} from "react-hook-form";
 import styles from "./PasswordPage.module.css";
 import validateUppercase from "../../tools/validateUppercase";
@@ -7,16 +7,13 @@ import validateSpecial from "../../tools/validateSpecial";
 import validateNumber from "../../tools/validateNumber";
 import validateConfirmation from "../../tools/validateConfirmation";
 import changePassword from "../../tools/changePassword";
-import {useNavigate} from "react-router-dom";
 import {LoginContext} from "../../context/LoginProvider";
 
 function PasswordPage() {
     const {register, watch, handleSubmit} = useForm();
-    const {logout, authData} = useContext(LoginContext);
-    const navigate = useNavigate;
+    const {logout} = useContext(LoginContext);
     const passwordWatcher = watch("password", "");
     const confirmationWatcher = watch("confirmation", "")
-
 
     function onFromSubmit(formData) {
         changePassword(formData.password, formData.confirmation).then((response) => {
@@ -25,7 +22,7 @@ function PasswordPage() {
                logout();
            }
         }).catch((e) => {
-            console.log(e.response);
+            console.log(e);
         });
     }
 
@@ -92,8 +89,6 @@ function PasswordPage() {
                     <button className={styles["form-btns"]} type="submit">Wijzigen</button>
                     <button className={styles["form-btns"]} type="button">Annuleren</button>
                 </div>
-
-
             </form>
         </div>
     );

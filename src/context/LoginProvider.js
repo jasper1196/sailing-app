@@ -2,6 +2,7 @@ import React, {createContext, useState, useEffect} from "react";
 import userLogin from "../tools/userLogin";
 import getUserInfo from "../tools/getUserInfo";
 import axios from "axios";
+import styles from "./LoginProvider.module.css";
 
 export const LoginContext = createContext(null);
 
@@ -13,13 +14,11 @@ function LoginProvider({children}) {
 
     axios.get("https://frontend-educational-backend.herokuapp.com/api/test/all");
 
-
     useEffect(() => {
         const token = localStorage.getItem("token");
 
         if (token) {
             getUserInfo(token).then((userInfo) => {
-                console.log(userInfo);
                 setAuthData({
                     "data": {
                         "email": userInfo.data.email,
@@ -28,7 +27,6 @@ function LoginProvider({children}) {
                     "status": "authorized"
                 });
             }).catch((e) => {
-                console.log(e);
                 localStorage.removeItem("token");
                 setAuthData({
                     "data": null,
@@ -41,13 +39,10 @@ function LoginProvider({children}) {
                 "status": "unauthorized"
             });
         }
-
     }, []);
-
 
     function login(username, password) {
         userLogin(username, password).then((response) => {
-            console.log(response);
             setAuthData({
                 "data": {
                     "email": response.data.email,
@@ -60,12 +55,10 @@ function LoginProvider({children}) {
                 "data": null,
                 "status": "failed"
             });
-            console.log(e)
         });
     }
 
     function logout() {
-        localStorage.removeItem("token");
         setAuthData({
             "data": null,
             "status": "unauthorized"
@@ -76,7 +69,6 @@ function LoginProvider({children}) {
         const token = localStorage.getItem("token");
 
         getUserInfo(token).then((userInfo) => {
-            console.log(userInfo);
             setAuthData({
                 "data": {
                     "email": userInfo.data.email,
@@ -85,7 +77,6 @@ function LoginProvider({children}) {
                 "status": "authorized"
             });
         }).catch((e) => {
-            console.log(e);
             setAuthData({
                 "data": null,
                 "status": "unauthorized"
@@ -103,10 +94,11 @@ function LoginProvider({children}) {
             refreshAuthData
         }}>
             {authData.status === "pending" ?
-                <p>Loading</p>
-
+                <div className={styles.wrapper}>
+                    <div className={styles.loader}/>
+                    <label className={styles.description}>Loading...</label>
+                </div>
                 :
-
                 children
             }
         </LoginContext.Provider>

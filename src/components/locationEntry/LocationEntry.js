@@ -4,12 +4,11 @@ import {ReactComponent as Cross} from "../../assets/cross.svg";
 import {FavoritesContext} from "../../context/FavoritesProvider";
 import capitalizeString from "../../tools/capitalizeString";
 
-function LocationEntry({location, locationHandler, setLocationValue}) {
+function LocationEntry({location, setSearchLocation, setLocationValue}) {
     const {remFavorite} = useContext(FavoritesContext);
 
-
     function handleClick() {
-        locationHandler(location[1]);
+        setSearchLocation(location[1]);
         setLocationValue(location[1]);
     }
 
@@ -18,7 +17,9 @@ function LocationEntry({location, locationHandler, setLocationValue}) {
             <label
                 className={styles["entry-text"]}
                 onClick={handleClick}
-            >{capitalizeString(location[1])}</label>
+            >
+                {capitalizeString(location[1])}
+            </label>
             <Cross
                 className={styles["remove-entry-btn"]}
                 onClick={() => (remFavorite(location[0]))}

@@ -4,7 +4,7 @@ import {TempUnitContext} from "../../context/TempUnitProvider";
 
 function TempUnitSelector() {
     const [isCelsius, setIsCelsius] = useState(true);
-    const {selectTempUnit, tempUnitSpec} = useContext(TempUnitContext);
+    const {selectTempUnit} = useContext(TempUnitContext);
 
     useEffect(() => {
         selectTempUnit();

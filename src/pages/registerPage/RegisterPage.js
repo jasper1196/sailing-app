@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import styles from "./RegisterPage.module.css";
 import registerUser from "../../tools/registerUser";
@@ -12,22 +12,27 @@ import {useNavigate} from "react-router-dom";
 function RegisterPage() {
     const {register, handleSubmit, formState: {errors}, watch} = useForm();
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [registrationError, setRegistrationError] = useState(false);
 
     function onFormSubmit(inputData) {
+        setRegistrationError(false);
+        setLoading(true);
 
         registerUser(inputData).then((response) => {
             if (response) {
                 console.log("User registration successful");
                 navigate("/login");
+                setLoading(false);
             } else {
+                setRegistrationError(true);
                 console.log("User registration failed");
+                setLoading(false);
             }
         }).catch((e) => {
-            console.log("User registration failed");
-            console.log(e);
+            setRegistrationError(true);
+            setLoading(false);
         })
-
-
     }
 
     const passwordWatcher = watch("password", "");
@@ -127,7 +132,14 @@ function RegisterPage() {
                         {...register("confirmation")}
                     />
                 </div>
-                <button type="submit" className={styles["submit-btn"]}>Registreren</button>
+                    <button type="submit" className={styles["submit-btn"]}>Registreren</button>
+                {loading &&
+                    <div className={styles["loader-wrapper"]}>
+                        <div className={styles.loader} />
+                        <label className={styles["loader-description"]}>Registreren...</label>
+                    </div>
+                }
+                {registrationError && <p className={styles["error-msg"]}>De gebruikersnaam of email bestaan al probeer het nogmaals.</p>}
             </form>
         </div>
     );

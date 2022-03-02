@@ -12,7 +12,6 @@ function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
     const {addFavorite, getFavoritesArray} = useContext(FavoritesContext);
     const isMounted = useRef(false);
 
-
     const days = ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"];
 
     useEffect(() => {
@@ -21,13 +20,12 @@ function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
 
     useEffect(() => {
         if (isMounted.current) {
-            if (!data.empty) {
-                setShowLocationInfo(true);
-                startClock();
-            } else {
-                console.log(data);
+            if (data !== undefined) {
+                if (!data.empty) {
+                    setShowLocationInfo(true);
+                    startClock();
+                }
             }
-
         } else {
             isMounted.current = true;
         }
@@ -39,11 +37,8 @@ function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
         setTimeout(startClock, 1000);
     }
 
-    //TODO: on first opening show text to search before data will be shown or default location data (default is preferred)
-
     return (
         <div className={styles.sidebar}>
-
             {showLocationInfo &&
                 <Fragment>
                     <div className={styles["location-information"]}>
@@ -73,7 +68,6 @@ function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
                             id="rangeSlider"
                         />
                     </div>
-
                     <Switcher
                         option1="Standaard"
                         option2="Uitgebreid"
@@ -81,11 +75,7 @@ function ForecastSidebar({defaultView, switchView, changeForecastRange, data}) {
                         switchView={switchView}
                     />
                 </Fragment>
-
-
             }
-
-
         </div>
     );
 }
@@ -117,7 +107,6 @@ function valueToHours(value) {
         default:
             hours = 6;
     }
-
     return hours;
 }
 

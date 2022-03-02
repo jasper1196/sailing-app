@@ -26,7 +26,6 @@ function AccountPage() {
 
     function onFormSubmit(changedData) {
         changeUserData({"email": changedData.email}).then((response) => {
-            console.log(response);
             refreshAuthData();
             defaultValues.email = authData.data.email;
             setFieldsChanged(false);
@@ -65,10 +64,6 @@ function AccountPage() {
                         {...register("email")}
                     />
                 </div>
-
-
-
-
                 {fieldsChanged &&
                     <div className={styles["info-fields"]}>
                         <button className={styles.btns} type="submit">Email wijzigen</button>

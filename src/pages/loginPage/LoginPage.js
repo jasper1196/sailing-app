@@ -3,7 +3,6 @@ import styles from "./LoginPage.module.css";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {LoginContext} from "../../context/LoginProvider";
-import getUserInfo from "../../tools/getUserInfo";
 
 function LoginPage() {
     const {register, handleSubmit, formState: {errors}} = useForm();

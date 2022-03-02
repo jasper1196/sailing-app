@@ -9,7 +9,6 @@ async function registerUser(userData) {
             "role": ["user"]
         });
         if (response.status === 200) {
-            console.log(response);
             return true;
         } else {
             return false;

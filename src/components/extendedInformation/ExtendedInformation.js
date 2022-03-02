@@ -7,13 +7,8 @@ import getSunscreenAdvise from "../../tools/getSunscreenAdvise";
 import getSailgrade from "../../tools/getSailgrade";
 
 function ExtendedInformation({data}) {
-
     const {changeTempUnit} = useContext(TempUnitContext);
     const {selectedWindUnit, convertWind} = useContext(WindUnitContext);
-
-    console.log(selectedWindUnit);
-
-    //TODO: create tooltips
 
     return (
         <div

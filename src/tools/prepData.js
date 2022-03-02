@@ -6,7 +6,6 @@ function prepData(data, interval, extended) {
 
         for (let i in data.forecast_data.days) {
             for (let j in data.forecast_data.days[i].hours) {
-
                 const forecast = data.forecast_data.days[i].hours[j];
 
                 const tempHourData = {
@@ -71,7 +70,6 @@ function prepData(data, interval, extended) {
         return preppedData;
 
     } catch (e) {
-        console.log("Error caught");
         console.error(e);
     }
 }
