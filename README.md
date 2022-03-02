@@ -1,6 +1,7 @@
 # Installatiehandleiding
+Github repository: https://github.com/jasper1196/sailing-app
 
-##Inleiding
+## Inleiding
 
 Met deze applicatie kan de meest relevante weersvoorspelling voor het zeilen worden opgehaald. 
 Door middel van de zoekbalk kan een locatie worden opgezocht om de actuele weersvoorspelling op te halen.\
@@ -9,25 +10,25 @@ Zoals in de screenshot te zien is wordt de meest relevante informatie weergegeve
 ![](src/assets/screenshot.png)
 
 
-##Benodigdheden
+## Benodigdheden
 
-###API key
+### API key
 Er wordt gebruik gemaakt van https://weatherapi.com/ om de weerdata op te halen.\
 De API key die hiervoor gebruikt kan worden is: d3da91da0b824e72ac2211303212911\
 Indien een API key aangemaakt moet worden, maak dan op https://weatherapi.com/ een account aan en genereer een key.
 
 
-###Backend
+### Backend
 Voor de applicatie wordt de algemeen toegankelijke NOVI backend gebruikt. 
 Hiervoor zijn geen inloggegevens beschikbaar.\
 Ga naar https://github.com/hogeschoolnovi/novi-educational-backend-documentation/ voor de backend documentatie.
 
-###Node.js
+### Node.js
 Om de applicatie te kunnen runnen moet Node.js geïnstalleerd zijn op het systeem.\
 Ga naar https://nodejs.org/en/download/ om Node.js te installeren.
 
 
-##Installatie
+## Installatie
 1. Open een `terminal` venster
 2. Ga naar de `project folder`
 3. Voer het volgende commando uit `npm install`
@@ -39,11 +40,11 @@ Ga naar https://nodejs.org/en/download/ om Node.js te installeren.
 _Indien dit niet het geval is ga naar http://localhost:3000/ in je browser._
 
 
-##Inloggegevens
+## Inloggegevens
 Er zijn geen bestaande inloggegevens. De backend die wordt gebruikt voor de authenticatie verwijderd ongeveer elk uur alle gegevens.
 
 
-##Beschikbare npm commando's
+## Beschikbare npm commando's
 
 In de project folder zijn de volgende commando's beschikbaar:
 
