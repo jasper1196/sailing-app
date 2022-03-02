@@ -1,6 +1,17 @@
 # Installatiehandleiding
 Github repository: https://github.com/jasper1196/sailing-app
 
+##Inhoudsopgave
+* [Inleiding](#inleiding)
+* [BenodigdHeden](#benodigdheden)
+  * [API key](#api-key)
+  * [Backend](#backend)
+  * [Node.js](#nodejs)
+* [Installatie](#installatie)
+* [Inloggegevens](#inloggegevens)
+* [Beschikbare npm commando's](#beschikbare-npm-commandos)
+
+
 ## Inleiding
 
 Met deze applicatie kan de meest relevante weersvoorspelling voor het zeilen worden opgehaald. 
